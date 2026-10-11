@@ -1,6 +1,6 @@
-# Joel is Joel
+# Joel's projects
 
-Fun side projects, published at [joelisjoel.github.io](https://joelisjoel.github.io/).
+Fun side projects, published at [joelisjoel.org](https://joelisjoel.org/).
 
 | Path | What it is |
 |---|---|

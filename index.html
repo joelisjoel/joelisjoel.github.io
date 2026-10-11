@@ -33,7 +33,15 @@
     .page {
       max-width: 820px;
       margin: 0 auto;
-      padding: 56px 16px 40px;
+      padding: 40px 16px 40px;
+    }
+
+    /* Data tree banner: the same PlayerShell as the Dendros Labs home page,
+       loaded from dendroslabs.com; click expands it to fullscreen */
+    .banner {
+      max-width: 100%;
+      margin-bottom: 32px;
+      border-radius: 8px;
     }
 
     header h1 {
@@ -177,10 +185,19 @@
       .card:hover, .card:focus-visible { transform: none; }
     }
   </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://esm.sh/three@0.163.0"
+      }
+    }
+  </script>
 </head>
 
 <body>
   <main class="page">
+    <div id="banner3d" class="banner" aria-label="Dendros Labs data tree"></div>
+
     <header>
       <h1>Joel <span>is</span> Joel</h1>
       <p>Fun side projects.</p>
@@ -188,7 +205,7 @@
 
     <a class="card feature" href="https://skywyrm.io/">
       <img src="images/skywyrm.jpg" width="960" height="540" loading="lazy"
-        alt="Skywyrm gameplay: dragons tangled over a dusk cloud sea">
+        alt="Skywyrm gameplay: a golden Chinese dragon flies over a cloud sea at golden hour while other dragons coil through the sky">
       <div class="feature-body">
         <div class="tag">Game · PC &amp; phone</div>
         <div class="feature-title">SKYWYRM</div>
@@ -236,10 +253,64 @@
       </li>
     </ul>
 
+    <h2>Data trees at Dendros Labs</h2>
+    <ul class="grid">
+      <li>
+        <a class="card" href="https://dendroslabs.com/datatree/">
+          <span class="tag">Dendros Labs</span>
+          <span class="title">Data Tree</span>
+          <span class="sub">Tree zero: the living data tree.</span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="https://dendroslabs.com/datatree2/">
+          <span class="tag">Dendros Labs</span>
+          <span class="title">Data Tree 2</span>
+          <span class="sub">A data tree that grows in stages, replayed.</span>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="https://dendroslabs.com/datatree2/dendros/">
+          <span class="tag">Dendros Labs</span>
+          <span class="title">Docs Tree</span>
+          <span class="sub">The Dendros Labs site itself, grown from its git history.</span>
+        </a>
+      </li>
+    </ul>
+
     <footer>
-      Explorations in data live at <a href="https://dendroslabs.com/">Dendros Labs</a>.
+      More explorations in data at <a href="https://dendroslabs.com/">dendroslabs.com</a>.
     </footer>
   </main>
+
+  <script type="module">
+    import { PlayerShell } from 'https://dendroslabs.com/include/player-shell.js?v=1';
+
+    const DENDROS = 'https://dendroslabs.com/';
+
+    const evolutionVis = (dataHref) => async (wrapper) => {
+      const [dataMod, visMod] = await Promise.all([
+        import(dataHref),
+        import(`${DENDROS}datatree2/datatree-vis.js?v=5`),
+      ]);
+      return new visMod.DatatreeVis(
+        wrapper, dataMod.dataTreeStateEvolution, { chrome: false, source: dataHref });
+    };
+
+    const VISES = [
+      { id: 'two', title: 'tree two', sub: 'staged evolution replay', thumb: `${DENDROS}include/thumb-tree-two.jpg`,
+        load: evolutionVis(`${DENDROS}datatree2/state-evolution.js?v=4`) },
+      { id: 'docs', title: 'docs tree', sub: 'dendroslabs.com, from git history', thumb: `${DENDROS}include/thumb-docs-tree.jpg`,
+        load: evolutionVis(`${DENDROS}datatree2/data/dendros-docs.js?v=2`) },
+      { id: 'zero', title: 'tree zero', sub: 'the living data tree', thumb: `${DENDROS}include/thumb-tree-zero.jpg`,
+        load: async (wrapper) => {
+          const { TreeZeroVis } = await import(`${DENDROS}include/tree-zero.js?v=1`);
+          return new TreeZeroVis(wrapper, { chrome: false });
+        } },
+    ];
+
+    new PlayerShell(document.getElementById('banner3d'), VISES, { defaultVis: 'two' });
+  </script>
 </body>
 
 </html>

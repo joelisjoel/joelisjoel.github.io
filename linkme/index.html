@@ -13,6 +13,7 @@
   <meta property="og:title" content="@joelisjoel">
   <meta property="og:description" content="Exploring new things">
   <meta property="og:url" content="https://joelisjoel.org/linkme/">
+  <meta property="og:image" content="https://joelisjoel.org/linkme/avatar.jpg">
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#3FA9AE" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0A2629" media="(prefers-color-scheme: dark)">
@@ -98,13 +99,11 @@
       color: var(--accent);
     }
 
-    .avatar span {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      font-size: 42px;
-      font-weight: 700;
+    .avatar img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     h1 {
@@ -214,8 +213,8 @@
 <body>
   <main class="page">
     <header>
-      <div class="avatar" aria-hidden="true">
-        <span>J</span>
+      <div class="avatar">
+        <img src="avatar.jpg" alt="Joel" width="96" height="96">
       </div>
       <h1>@joelisjoel</h1>
       <p class="bio">Exploring new things</p>

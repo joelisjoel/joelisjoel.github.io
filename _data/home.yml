@@ -66,6 +66,7 @@ sections:
       - id: pascals-bunker
         title: Pascal's Bunker
         meta: Video · 3 min
+        soon: true
         blurb: >-
           If AI ends the world, will building a bunker help? The parallel
           between the possibility of a digital god and Pascal's wager.
@@ -199,6 +200,7 @@ sections:
           2026.
         image: /images/home/fire.jpg
       - id: google
+        image: /images/home/logo-google.jpg
         title: Google
         meta: 2008–2026
         blurb: >-
@@ -206,12 +208,14 @@ sections:
           Co-founded teams like Search Analysis, Growth Engineering, Attention,
           Bard Analytics and Data Engineering.
       - id: stanford
+        image: /images/home/logo-stanford.jpg
         title: Stanford University
         meta: 2005–2008 · MSEE
         blurb: >-
           MSEE, retraining from hardware to software, including early AI and
           ML. Stanford Pain Lab. CCRMA.
       - id: juniper
+        image: /images/home/logo-juniper.jpg
         title: Juniper Networks
         meta: 1999–2005
         blurb: >-
@@ -220,18 +224,21 @@ sections:
           VCSEL routing. PCB and FPGA design. 10G networking and signal
           integrity.
       - id: sgi
+        image: /images/home/logo-sgi.jpg
         title: Silicon Graphics
         meta: 1996–1999
         blurb: >-
           Signal integrity for the Beast microprocessor, rack systems and
           HIPPI-6400. Chip and PCB design.
       - id: ucsc
+        image: /images/home/logo-ucsc.jpg
         title: UC Santa Cruz
         meta: 1992–1997 · PhD
         blurb: >-
           PhD. Thesis: Cost-Effective Architectures of Field-Programmable
           Multichip Modules.
       - id: ucsb
+        image: /images/home/logo-ucsb.jpg
         title: UC Santa Barbara
         meta: 1986–1991 · BS
         blurb: BS Electrical Engineering. Control systems, robotics, Japanese.

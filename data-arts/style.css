@@ -1,0 +1,312 @@
+/* Data Arts Working Group: shared styles for the section home and every
+   issue. Same palette as the joelisjoel.org landing page, with a serif body
+   for long reading. */
+
+:root {
+  --bg: #111318;
+  --card: #191d28;
+  --line: #2c3242;
+  --text: #eef0f5;
+  --body: #d9dce6;
+  --muted: #9aa3bf;
+  --accent: #FFD93D;
+  --accent-ink: #1a1400;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.5;
+}
+
+a { color: inherit; }
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px 16px 48px;
+}
+
+/* Breadcrumbs back to the landing page and the section home */
+.crumbs {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { color: var(--text); }
+.crumbs span { margin: 0 6px; opacity: 0.6; }
+
+/* ---------- Section home ---------- */
+
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(2.1rem, 8vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.masthead h1 span { color: var(--accent); display: block; }
+
+.masthead .tagline {
+  margin: 12px 0 0;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.masthead .intro {
+  margin-top: 18px;
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  line-height: 1.65;
+  color: var(--body);
+}
+
+.masthead .intro p { margin: 0 0 0.8em; }
+
+h2.section {
+  margin: 44px 0 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.latest { overflow: hidden; }
+
+.latest img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.latest .latest-body { display: block; padding: 20px 22px 22px; }
+
+.kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.latest .latest-title {
+  display: block;
+  margin: 6px 0 8px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--accent);
+}
+
+.latest .latest-dek { display: block; color: var(--body); }
+
+.latest .cta {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 800;
+}
+
+.empty {
+  padding: 22px;
+  color: var(--body);
+}
+
+.archive {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.archive li { border-bottom: 1px solid var(--line); }
+
+.archive a {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 4px 12px;
+  padding: 14px 4px;
+  text-decoration: none;
+}
+
+.archive a:hover .archive-title { color: var(--accent); }
+
+.archive .num {
+  grid-row: span 2;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.archive .archive-title { font-weight: 700; }
+
+.archive .archive-meta {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* ---------- Issue page ---------- */
+
+.issue-head h1 {
+  margin: 8px 0 10px;
+  font-size: clamp(1.9rem, 7vw, 2.7rem);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+}
+
+.issue-head .dek {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+
+.cover {
+  margin: 28px 0 0;
+}
+
+.cover img,
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.cover figcaption,
+.prose figcaption {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.prose {
+  margin-top: 30px;
+  font-family: var(--serif);
+  font-size: 1.14rem;
+  line-height: 1.7;
+  color: var(--body);
+  overflow-wrap: break-word;
+}
+
+.prose > :first-child { margin-top: 0; }
+
+.prose h2,
+.prose h3 {
+  font-family: var(--sans);
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.prose h2 { margin: 2em 0 0.6em; font-size: 1.45rem; }
+.prose h3 { margin: 1.6em 0 0.5em; font-size: 1.15rem; }
+
+.prose p,
+.prose ul,
+.prose ol,
+.prose blockquote,
+.prose figure { margin: 0 0 1.1em; }
+
+.prose ul,
+.prose ol { padding-left: 1.3em; }
+
+.prose li { margin-bottom: 0.5em; }
+
+.prose a {
+  color: var(--text);
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.prose a:hover { color: var(--accent); }
+
+.prose strong { color: var(--text); }
+
+.prose blockquote {
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
+  color: var(--text);
+  font-style: italic;
+}
+
+.prose .when {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2em 0;
+}
+
+.issue-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+
+.issue-nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.issue-nav a:hover { color: var(--text); }
+
+footer {
+  margin-top: 40px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+footer a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+footer a:hover { border-bottom-color: var(--text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+  .card:hover, .card:focus-visible { transform: none; }
+}

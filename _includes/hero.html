@@ -1,0 +1,16 @@
+{%- assign h = site.data.home.hero -%}
+<section class="hero">
+  <div class="wrap">
+    {%- if h.status %}
+    <a class="status" href="{{ h.status_url }}"><span class="dot" aria-hidden="true"></span>{{ h.status }}</a>
+    {%- endif %}
+    <p class="greeting"><img src="{{ h.photo }}" alt="Joel" width="56" height="56">{{ h.greeting }}</p>
+    <h1>{{ h.headline_start }} <em>{{ h.headline_em }}</em></h1>
+    <p class="intro">{{ h.intro }}</p>
+    <ul class="jump" aria-label="Jump to a section">
+      {%- for s in site.data.home.sections %}
+      <li><a href="#{{ s.id }}">{{ s.title }}</a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

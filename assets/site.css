@@ -601,3 +601,45 @@ main > :is(h1, h2, h3, h4, p, ul, ol, pre, table, blockquote, hr) {
 }
 
 main > pre { overflow-x: auto; }
+
+/* Data Arts Working Group: latest-issue block written into index.html by
+   data-arts/_tools/build.mjs (markup comes from that script) */
+.da-strip {
+  margin: 0 0 32px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent-soft);
+  border-radius: var(--radius);
+  background: linear-gradient(120deg, var(--glow), transparent 60%), var(--surface);
+}
+
+.da-strip h2 {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.da-strip .issue-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.da-strip .tag { color: var(--muted); font-family: var(--mono); font-size: 0.8rem; }
+
+.da-strip .title { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.01em; }
+
+.da-strip .sub { color: var(--muted); }
+
+.da-strip .more { color: var(--accent); font-weight: 650; }
+
+.da-strip .issue-card:hover .title { text-decoration: underline; }
+
+.issue-links { margin: 12px 0 0; color: var(--muted); font-size: 0.9rem; }
+
+.issue-links a { color: var(--accent); text-decoration: none; }

@@ -12,6 +12,7 @@ section also has its own page (`/about/`, `/thoughts/`, `/projects/`,
 | Path | What it is |
 |---|---|
 | `_data/home.yml` | All homepage content |
+| `data-arts/` | The Data Arts Working Group: a weekly issue, published Fridays at 9am Pacific |
 | `linkme/` | The links page that replaced Linktree |
 | `snake/`, `snake3/` | Snake 2.5D and Snake 3D |
 | `cube/` | The rotating cube demo |
@@ -23,3 +24,20 @@ Skywyrm, the dragon game, has its own home at [skywyrm.io](https://skywyrm.io)
 
 GitHub Pages builds the `main` branch with Jekyll. See [CLAUDE.md](CLAUDE.md)
 for how the site is put together and how to add things.
+
+## Data Arts Working Group
+
+`data-arts/` is a weekly publication at
+[joelisjoel.org/data-arts](https://joelisjoel.org/data-arts/). Each issue is
+`data-arts/issues/NNN/` (`issue.json`, `body.html`, `assets/`); the pages,
+RSS feed and the landing-page card are generated:
+
+```bash
+node data-arts/_tools/build.mjs   # render pages, feed and landing block
+node data-arts/_tools/check.mjs   # safety and link checks; must pass
+```
+
+A scheduled Claude task runs the `data-arts-weekly` skill
+(`.claude/skills/data-arts-weekly/SKILL.md`) every Friday morning: it takes the
+next issue from the Data Arts Working Group folder in Google Drive, builds and
+checks it, and pushes it to `main`.

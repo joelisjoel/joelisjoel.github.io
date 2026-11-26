@@ -130,12 +130,12 @@ sections:
         image: /images/skywyrm.jpg
         url: https://skywyrm.io/
       - id: data-arts
-        title: Data Arts WG
-        meta: Working group
-        blurb: "[Placeholder: one line on the working group.]"
+        title: Data Arts Working Group
+        meta: Weekly · Fridays
+        blurb: Where data meets art. A new issue every Friday.
         image_hint: Image
+        url: /data-arts/
         soon: true
-        todo: true
       - id: dendros
         title: Dendros Labs
         meta: Data explorations

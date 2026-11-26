@@ -25,7 +25,7 @@
 #            left out of llms.txt). Search this file for "todo: true".
 
 hero:
-  status: "Now building a P≠NP proof visualizer"
+  status: "Now building a P vs NP visualizer"
   status_url: /projects/#pequalsnp
   headline_start: "Learning to surf the wave of"
   headline_em: "superintelligence"

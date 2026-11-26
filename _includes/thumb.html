@@ -1,13 +1,15 @@
-{%- comment -%} An item's thumbnail: image, letter mark, brand icon or placeholder. Param: item. {%- endcomment -%}
+{%- comment -%} An item's thumbnail: image, brand icon, placeholder (todo) or nothing. Param: item. {%- endcomment -%}
 {%- assign it = include.item -%}
+{%- if it.image or it.icon or it.todo or it.image_hint -%}
 <span class="thumb">
   {%- if it.image -%}
   <img src="{{ it.image }}" alt="" width="640" height="360" loading="lazy" decoding="async">
-  {%- elsif it.mark -%}
-  <span class="thumb-mark{% if it.mark.size > 2 %} is-long{% endif %}" aria-hidden="true">{{ it.mark }}</span>
   {%- elsif it.icon -%}
   <span class="thumb-icon">{% include icon.html name=it.icon %}</span>
   {%- else -%}
   <span class="thumb-todo">{{ it.image_hint | default: "Image" }}</span>
   {%- endif -%}
 </span>
+{%- else -%}
+<span class="thumb thumb-none" aria-hidden="true"></span>
+{%- endif -%}

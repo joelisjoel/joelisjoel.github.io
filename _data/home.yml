@@ -14,7 +14,6 @@
 #   more     optional article (Markdown, ~200 words) shown on the section
 #            page. When an item has one, its homepage card opens the article.
 #   image    /images/home/<name>.jpg: 640x360 (16:9), or 400x400 for About
-#   mark     instead of an image: a few letters shown as a tile (e.g. "G")
 #   icon     instead of an image: x, linkedin, youtube, substack, github, instagram, tiktok
 #   image_hint  what picture is still needed (shown when there is no image)
 #   url      where the item lives (video, game, page)
@@ -27,7 +26,7 @@
 
 hero:
   status: "Now building a P≠NP proof visualizer"
-  status_url: https://pequalnp.com/
+  status_url: /projects/#pequalsnp
   headline_start: "Let's learn to surf the wave of"
   headline_em: "superintelligence."
   # One line per line on the page
@@ -104,6 +103,45 @@ sections:
     page: /projects/
     see_all: All projects
     items:
+      - id: pequalsnp
+        title: PequalsNP Lemma Visualizer
+        meta: Visualization · 2026
+        # The deck's tagline here repeats Skywyrm's; this one is a draft
+        blurb: >-
+          Mapping an AI agent fleet's public attack on P vs NP, one lemma at a
+          time.
+        image: /images/home/pequalsnp-visualizer.jpg
+        more: |
+          P vs NP asks whether every problem whose answer is easy to check is
+          also easy to solve. [pequalnp.com](https://pequalnp.com/), a project
+          by Amichai and Lior built in Brilliant, is attacking it in public
+          with a fleet of AI agents. Orchestrators take lemmas inside research
+          programs, a red team hunts for counterexamples, a barrier desk tests
+          each idea against the known walls, and the Lean proof checker is the
+          only judge of what counts. Every step and dead end stays on the
+          record.
+
+          This visualizer turns that record into one picture. Each lemma is a
+          dot, filed in a lane by program (circuit bounds, proof complexity,
+          geometric complexity theory and a few meta topics) and pushed left
+          or right by the answer its program aims at. Lines trace chains of
+          lemmas toward each program's target. One snapshot, on November 24:
+          251 toward P ≠ NP, none toward P = NP, and 3,072 in a grey middle.
+
+          How well does it show progress? It shows effort and shape: which
+          fronts are busy, which have stalled, and where chains are reaching
+          for a target. It can't show distance, because nobody knows how far
+          away the answer is, and a lopsided count is easy to misread as odds.
+          The project itself calls its tally "a count, not a probability." A
+          lemma that completes a chain also looks just like a routine sanity
+          check; sizing dots by how much rests on them would help.
+
+          The alternatives are pequalnp's own views (a board of every lemma, a
+          dependency graph, a calendar and a graveyard of dead approaches) and
+          the dependency "blueprints" Lean formalization projects use to mark
+          each lemma as stated or proved. Those show structure precisely. This
+          one is built to show momentum at a glance.
+
       - id: skywyrm
         title: Skywyrm
         meta: Game · PC & phone
@@ -138,6 +176,15 @@ sections:
           ad-free games are gifts, and they show anyone with an idea how far a
           spec can now go.
 
+      - id: dendros
+        title: Dendros
+        meta: Data visualization
+        blurb: >-
+          Exploring how tree based visualizations can make data science like a
+          “walk in the park”.
+        image: /images/home/dendros.jpg
+        url: https://dendroslabs.com/
+
   - id: about
     title: About
     blurb: Bio, newest first.
@@ -167,14 +214,12 @@ sections:
           18 years of experience in software and engineering management.
           Co-founded teams like Search Analysis, Growth Engineering, Attention,
           Bard Analytics and Data Engineering.
-        mark: G
       - id: stanford
         title: Stanford University
         meta: 2005–2008 · MSEE
         blurb: >-
           MSEE, retraining from hardware to software, including early AI and
           ML. Stanford Pain Lab. CCRMA.
-        mark: S
       - id: juniper
         title: Juniper Networks
         meta: 1999–2005
@@ -183,30 +228,26 @@ sections:
           routers. Specialized in optical networking, especially multimode
           VCSEL routing. PCB and FPGA design. 10G networking and signal
           integrity.
-        mark: JN
       - id: sgi
         title: Silicon Graphics
         meta: 1996–1999
         blurb: >-
           Signal integrity for the Beast microprocessor, rack systems and
           HIPPI-6400. Chip and PCB design.
-        mark: SGI
       - id: ucsc
         title: UC Santa Cruz
         meta: 1992–1997 · PhD
         blurb: >-
           PhD. Thesis: Cost-Effective Architectures of Field-Programmable
           Multichip Modules.
-        mark: UCSC
       - id: ucsb
         title: UC Santa Barbara
         meta: 1986–1991 · BS
         blurb: BS Electrical Engineering. Control systems, robotics, Japanese.
-        mark: UCSB
 
   - id: archive
     title: Archive
-    blurb: Earlier experiments in vibe coding. Both run in your browser.
+    blurb: Older projects and toys.
     page: /archive/
     see_all: The full archive
     items:

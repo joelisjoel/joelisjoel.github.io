@@ -353,20 +353,13 @@ a.status:hover { color: var(--ink); border-color: var(--accent); }
   height: 100%;
 }
 
-/* Letter tiles (e.g. "G", "UCSC") for items without a picture */
-.thumb-mark {
-  display: grid;
-  place-items: center;
-  height: 100%;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  background: linear-gradient(140deg, var(--glow), transparent 70%), var(--surface);
-  color: var(--accent);
-  font: 700 1.35rem var(--font);
-  letter-spacing: -0.02em;
-}
+/* No picture: cards go text-only; About entries keep the gutter so
+   headings stay lined up */
+.thumb-none { background: none; border: 0; }
 
-.thumb-mark.is-long { font-size: 0.85rem; letter-spacing: 0.02em; }
+.card .thumb-none { display: none; }
+
+.cards .card a:has(.thumb-none) { grid-template-columns: 1fr; }   /* beats .cards-list/.cards-grid */
 
 .thumb-icon svg {
   width: 38%;
@@ -436,8 +429,13 @@ a.status:hover { color: var(--ink); border-color: var(--accent); }
 }
 
 /* About: square logo-style thumbnails, LinkedIn-like */
-.cards-list .card a { grid-template-columns: 64px 1fr; align-items: start; }
+.cards-list .card a { grid-template-columns: 56px 1fr; align-items: start; }
 .cards-list .thumb { aspect-ratio: 1; }
+
+/* Like the About page: heading first, dates under it, beside the logo */
+.cards-list .title { order: 1; }
+.cards-list .meta { order: 2; }
+.cards-list .blurb { order: 3; margin-top: 4px; }
 
 /* Wider screens: three across, image on top */
 @media (min-width: 720px) {
@@ -529,6 +527,25 @@ a.status:hover { color: var(--ink); border-color: var(--accent); }
 
 .entry-list .entry-media .thumb { width: 96px; aspect-ratio: 1; }
 
+/* About timeline: a small thumbnail to the left of each heading, at every
+   width, with the heading first and the dates under it */
+.entries .entry-list {
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 14px;
+  padding: 20px 0;
+  align-items: start;
+}
+
+.entry-list .entry-media .thumb { width: 56px; border-radius: 10px; }
+
+.entry-list .entry-body { display: flex; flex-direction: column; }
+
+.entry-list .entry-title { order: 1; font-size: 1.2rem; line-height: 1.25; }
+
+.entry-list .meta { order: 2; margin: 3px 0 0; }
+
+.entry-list .entry-tagline { order: 3; margin-top: 6px; font-size: 1rem; }
+
 /* Embedded YouTube player: full width of the text column, 16:9 */
 .player {
   display: block;
@@ -589,7 +606,8 @@ a.status:hover { color: var(--ink); border-color: var(--accent); }
 
 @media (min-width: 720px) {
   .entry { grid-template-columns: 280px minmax(0, 1fr); gap: 28px; }
-  .entry-list { grid-template-columns: 96px minmax(0, 1fr); gap: 20px; padding: 20px 0; }
+  .entries .entry-list { grid-template-columns: 72px minmax(0, 1fr); gap: 20px; }
+  .entry-list .entry-media .thumb { width: 72px; }
   .entry-video { grid-template-columns: minmax(0, 760px); }
 }
 

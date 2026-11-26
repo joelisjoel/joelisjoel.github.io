@@ -36,7 +36,8 @@ Pushing to `main` publishes within about a minute.
 - **Articles**: put ~200 words of Markdown in an item's `more:`. The
   homepage card then opens the article on the section page; the item's `url`
   becomes the button under the article (label from `cta:`).
-- **No picture?** Use `mark: "G"` for a letter tile (About timeline).
+- **No picture?** Leave `image` out: the item shows without one. Don't
+  stand in letters or generic art for a missing logo.
 - **Videos**: add `youtube: <video id>` to an item and its section page
   shows the YouTube player (youtube-nocookie.com) instead of the thumbnail.
 - **Placeholders** have `todo: true`. They get a dashed outline and are left

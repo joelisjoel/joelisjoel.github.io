@@ -27,33 +27,31 @@ hero:
   intro: >-
     I build at the edges of data, AI and play: from a Facebook app that
     passed a million installs in 2007, to living data trees, a 3D dragon game
-    and a robotics club in Fremont. This is where I keep what I'm thinking
-    about, what I'm making, and what I've made.
+    and a robotics club in Fremont. This site is the fun side: art, games and
+    experiments.
+  # The hand-off for anyone here on business
+  work_label: "Here for work? My professional profile is on LinkedIn"
+  work_url: https://www.linkedin.com/in/joelisjoel
 
 sections:
   - id: about
     title: About
-    blurb: "[Placeholder: two or three sentences paraphrasing your LinkedIn headline and About.]"
+    blurb: The fun side lives here. The professional side lives on LinkedIn.
     page: /about/
     see_all: More about me
     style: list
-    # Longer bio for /about/. Placeholder until you send LinkedIn text.
+    # Longer text for /about/ (Markdown)
     long: >-
-      [Placeholder: a longer bio, three or four short paragraphs. Paste your
-      LinkedIn About and Experience (or a resume) and I'll paraphrase it here.]
+      This site is for art, games and experiments. For my professional
+      background, roles and how to reach me about work, see
+      [my LinkedIn profile](https://www.linkedin.com/in/joelisjoel).
     items:
-      - id: now
-        title: "[Current role]"
-        meta: "[Company] · [Years]"
-        blurb: "[One line on what you do there.]"
-        image_hint: Logo
-        todo: true
-      - id: before
-        title: "[Previous role]"
-        meta: "[Company] · [Years]"
-        blurb: "[One line on what you did there.]"
-        image_hint: Logo
-        todo: true
+      - id: work
+        title: Work & career
+        meta: LinkedIn
+        blurb: Roles, experience, and the best way to reach me about work.
+        icon: linkedin
+        url: https://www.linkedin.com/in/joelisjoel
       - id: kissme
         title: Co-creator, KissMe on Facebook
         meta: Stanford · 2007–2009
@@ -66,12 +64,6 @@ sections:
           growth from October 2007 to October 2009.
         image: /images/home/video-kissme.jpg
         url: https://www.youtube.com/watch?v=1nREHPymu_0
-      - id: school
-        title: "[Education]"
-        meta: "[School] · [Degree] · [Years]"
-        blurb: "[Optional one line.]"
-        image_hint: Logo
-        todo: true
 
   - id: thoughts
     title: Thoughts

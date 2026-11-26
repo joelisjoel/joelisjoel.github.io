@@ -251,6 +251,30 @@ summary:focus-visible {
 }
 
 
+/* "Here for work?" hand-off to LinkedIn */
+.handoff {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  margin-top: 24px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.handoff svg { flex: none; width: 20px; height: 20px; fill: var(--accent); }
+
+.handoff .arrow { color: var(--muted); }
+
+.handoff:hover { border-color: var(--accent); }
+
+.handoff:hover .arrow { color: var(--accent); }
+
 /* ---------- Sections ---------- */
 
 .section {

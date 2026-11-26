@@ -1,6 +1,7 @@
 {%- assign h = site.data.home.hero -%}
 <section class="hero">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
     {%- if h.status %}
     <a class="status" href="{{ h.status_url }}"><span class="dot" aria-hidden="true"></span>{{ h.status }}</a>
     {%- endif %}
@@ -12,5 +13,7 @@
       <li><a href="#{{ s.id }}">{{ s.title }}</a></li>
       {%- endfor %}
     </ul>
+    </div>
+    {% include tree.html %}
   </div>
 </section>

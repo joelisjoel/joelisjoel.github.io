@@ -17,6 +17,14 @@
 #   soon     true = adds a "Coming soon" badge
 #   todo     true = placeholder you still need to fill in (dashed outline;
 #            left out of llms.txt). Search this file for "todo: true".
+#
+# Tree fields (the "How it all grew" tree on the homepage; items without
+# `when` and `thread` are left off the tree)
+#   when     "YYYY" or "YYYY-MM", quoted
+#   thread   one of the thread ids below; sets the colour
+#   parent   id of the item this grew out of; it branches off that leaf
+#   short    shorter label for the tree (defaults to title)
+#   approx   true = the date is a guess; shown as ~YYYY
 
 hero:
   status: "Now building Skywyrm, a 3D dragon game"
@@ -31,6 +39,15 @@ hero:
     passed a million installs in 2007, to living data trees, a 3D dragon game
     and a robotics club in Fremont. This is where I keep what I'm thinking
     about, what I'm making, and what I've made.
+
+# Threads for the tree: each is a colour. Order doesn't matter.
+threads:
+  - { id: apps, label: Apps, color: "#F472B6" }
+  - { id: moments, label: Moments, color: "#FBBF24" }
+  - { id: robotics, label: Robotics, color: "#F87171" }
+  - { id: games, label: Games & 3D, color: "#A78BFA" }
+  - { id: data, label: Data art, color: "#5FD3D6" }
+  - { id: ideas, label: Ideas & AI, color: "#86EFAC" }
 
 sections:
   - id: about
@@ -57,6 +74,9 @@ sections:
         image_hint: Logo
         todo: true
       - id: kissme
+        when: "2007-10"
+        thread: apps
+        short: KissMe on Facebook
         title: Co-creator, KissMe on Facebook
         meta: Stanford · 2007–2009
         blurb: >-
@@ -82,6 +102,9 @@ sections:
     see_all: All thoughts
     items:
       - id: decision-engineering
+        when: "2026-09"
+        thread: ideas
+        short: Decision engineering
         title: Toward decision engineering
         meta: Video · Sep 2026
         blurb: >-
@@ -104,6 +127,9 @@ sections:
         icon: x
         url: https://x.com/joelisjoel
       - id: drum-circle
+        when: "2007-08"
+        thread: moments
+        short: Drum circle
         title: Drum circle
         meta: Video · Burning Man 2007
         blurb: A drum circle at Burning Man, 2007.
@@ -117,6 +143,9 @@ sections:
     see_all: All projects
     items:
       - id: fire
+        when: "2023-08"
+        thread: robotics
+        short: FIRE robotics
         title: Fremont Institute of Robotics Education
         meta: Robotics club · Fremont
         blurb: "[Placeholder: what FIRE is and your part in it.]"
@@ -124,12 +153,20 @@ sections:
         image_hint: Team photo or logo
         todo: true
       - id: skywyrm
+        when: "2026"   # approximate: please confirm
+        thread: games
+        parent: snake3
+        approx: true
         title: Skywyrm
         meta: Game · PC & phone
         blurb: A 3D dragon take on Slither. Fly, eat, grow, and don't touch their tails.
         image: /images/skywyrm.jpg
         url: https://skywyrm.io/
       - id: data-arts
+        when: "2026-11"
+        thread: data
+        parent: dendros
+        short: Data Arts WG
         title: Data Arts Working Group
         meta: Weekly · Fridays
         blurb: Where data meets art. A new issue every Friday.
@@ -137,6 +174,10 @@ sections:
         url: /data-arts/
         soon: true
       - id: dendros
+        when: "2026"   # approximate: please confirm
+        thread: data
+        parent: docstree
+        approx: true
         title: Dendros Labs
         meta: Data explorations
         blurb: Living data trees, grown from real datasets and git histories.
@@ -151,48 +192,76 @@ sections:
     see_all: The full archive
     items:
       - id: metacube
+        when: "2026"   # approximate: please confirm
+        thread: games
+        parent: cube
+        approx: true
         title: Metacube
         meta: 3D · three.js
         blurb: "A floating cube with a tiny world on each face: chess, a Mandelbrot landscape, a clock, an Escher room and more."
         image: /images/home/metacube.jpg
         url: /metacube/
       - id: snake3
+        when: "2025"   # approximate: please confirm
+        thread: games
+        parent: snake
+        approx: true
         title: Snake 3D
         meta: Game · keyboard
         blurb: "Snake in a box, seen four ways at once: top, west, north and through the snake's own eyes."
         image: /images/home/snake3.jpg
         url: /snake3/
       - id: world-pulse
+        when: "2026"   # approximate: please confirm
+        thread: data
+        approx: true
         title: World Pulse
         meta: 3D globe
         blurb: A spinning Earth with news events pinned where they happened.
         image: /images/home/worldview.jpg
         url: /worldview/
       - id: snake
+        when: "2025"   # approximate: please confirm
+        thread: games
+        approx: true
         title: Snake 2.5D
         meta: Game · keyboard
         blurb: Classic snake from above, plus a snake's-eye view underneath.
         image: /images/home/snake.jpg
         url: /snake/
       - id: datatree
+        when: "2026"   # approximate: please confirm
+        thread: data
+        approx: true
         title: Data Tree
         meta: Dendros Labs
         blurb: "Tree zero: the living data tree."
         image: /images/home/datatree.jpg
         url: https://dendroslabs.com/datatree/
       - id: datatree2
+        when: "2026"   # approximate: please confirm
+        thread: data
+        parent: datatree
+        approx: true
         title: Data Tree 2
         meta: Dendros Labs
         blurb: A data tree that grows in stages, replayed.
         image: /images/home/datatree2.jpg
         url: https://dendroslabs.com/datatree2/
       - id: docstree
+        when: "2026"   # approximate: please confirm
+        thread: data
+        parent: datatree2
+        approx: true
         title: Docs Tree
         meta: Dendros Labs
         blurb: The Dendros Labs site itself, grown from its git history.
         image: /images/home/docstree.jpg
         url: https://dendroslabs.com/datatree2/dendros/
       - id: cube
+        when: "2025"   # approximate: please confirm
+        thread: games
+        approx: true
         title: Cube Demo
         meta: 3D · three.js
         blurb: "Where it all started: one shiny emerald cube, rotating."

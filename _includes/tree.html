@@ -1,0 +1,33 @@
+{%- comment -%}
+  "How it all grew": every item with `when` + `thread` in _data/home.yml,
+  drawn as a tree by /assets/tree.js (trunk = time, newest at the top;
+  an item with `parent` branches off that item). Hidden if scripts are off.
+{%- endcomment -%}
+<nav class="tree" aria-labelledby="tree-h">
+  <p class="tree-h" id="tree-h"><span class="kicker">Map</span> How it all grew</p>
+  <div class="tree-canvas" id="tree-canvas"></div>
+  <ul class="tree-legend">
+    {%- for t in site.data.home.threads %}
+    <li><span class="swatch" data-color="{{ t.color }}"></span>{{ t.label }}</li>
+    {%- endfor %}
+  </ul>
+  <script type="application/json" id="tree-data">
+    {
+      "threads": {{ site.data.home.threads | jsonify }},
+      "items": [
+      {%- assign first = true -%}
+      {%- for s in site.data.home.sections -%}
+      {%- for it in s.items -%}
+      {%- if it.when and it.thread -%}
+      {%- unless first %},{% endunless -%}
+      {%- assign first = false -%}
+      {%- if it.url -%}{%- assign u = it.url -%}{%- else -%}{%- capture u -%}{{ s.page }}#{{ it.id }}{%- endcapture -%}{%- endif %}
+        {"id": {{ it.id | jsonify }}, "label": {{ it.short | default: it.title | jsonify }}, "title": {{ it.title | jsonify }}, "when": {{ it.when | append: "" | jsonify }}, "approx": {{ it.approx | default: false | jsonify }}, "thread": {{ it.thread | jsonify }}, "parent": {{ it.parent | jsonify }}, "url": {{ u | jsonify }}, "section": {{ s.title | jsonify }}}
+      {%- endif -%}
+      {%- endfor -%}
+      {%- endfor %}
+      ]
+    }
+  </script>
+  <script src="/assets/tree.js" defer></script>
+</nav>

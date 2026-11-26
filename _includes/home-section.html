@@ -1,12 +1,11 @@
 {%- comment -%}
   A section on the homepage: heading, blurb, first 3 items, the rest folded.
-  Params: section, number.
+  Params: section.
 {%- endcomment -%}
 {%- assign s = include.section -%}
 {%- assign extra = s.items.size | minus: 3 -%}
 <section class="section" id="{{ s.id }}" aria-labelledby="{{ s.id }}-h">
   <div class="section-head">
-    <p class="kicker">{{ include.number }}</p>
     <h2 id="{{ s.id }}-h"><a href="{{ s.page }}">{{ s.title }}</a></h2>
     <p class="section-blurb">{{ s.blurb }}</p>
   </div>

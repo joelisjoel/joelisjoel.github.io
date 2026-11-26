@@ -19,8 +19,8 @@
 #            left out of llms.txt). Search this file for "todo: true".
 
 hero:
-  status: "Now building Skywyrm, a 3D dragon game"
-  status_url: https://skywyrm.io/
+  status: "Now building a P≠NP proof visualizer"
+  # status_url: add a link here once the visualizer has a page
   headline_start: "Learning to surf the wave of"
   headline_em: "superintelligence."
   # Draft written from your X bio, YouTube and projects. Edit freely.

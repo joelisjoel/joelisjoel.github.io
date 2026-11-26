@@ -2,19 +2,19 @@
 // Builds the Data Arts Working Group section of joelisjoel.org.
 //
 // Sources (hand- or agent-written):
-//   data-arts/section.json              section title, tagline, intro, site URL
-//   data-arts/issues/NNN/issue.json     one issue's metadata
-//   data-arts/issues/NNN/body.html      that issue's article body (an HTML fragment)
-//   data-arts/issues/NNN/assets/        that issue's images
+//   data_arts/section.json              section title, tagline, intro, site URL
+//   data_arts/issues/NNN/issue.json     one issue's metadata
+//   data_arts/issues/NNN/body.html      that issue's article body (an HTML fragment)
+//   data_arts/issues/NNN/assets/        that issue's images
 //
 // Generated (never edit by hand; rerun this script):
-//   data-arts/issues/NNN/index.html     the issue page
-//   data-arts/index.html                section home: latest issue + archive
-//   data-arts/issues.json               machine-readable list of issues
-//   data-arts/feed.xml                  RSS feed
-//   index.html (repo root)              the block between the data-arts markers
+//   data_arts/issues/NNN/index.html     the issue page
+//   data_arts/index.html                section home: latest issue + archive
+//   data_arts/issues.json               machine-readable list of issues
+//   data_arts/feed.xml                  RSS feed
+//   index.html (repo root)              the block between the data_arts markers
 //
-// Usage: node data-arts/_tools/build.mjs
+// Usage: node data_arts/_tools/build.mjs
 // No dependencies. Output is deterministic: rerunning without source
 // changes produces no diff.
 
@@ -26,8 +26,8 @@ const SECTION_DIR = dirname(dirname(fileURLToPath(import.meta.url)));
 const ROOT_DIR = dirname(SECTION_DIR);
 const ISSUES_DIR = join(SECTION_DIR, 'issues');
 
-const MARK_START = '<!-- data-arts:start';
-const MARK_END = '<!-- data-arts:end -->';
+const MARK_START = '<!-- data_arts:start';
+const MARK_END = '<!-- data_arts:end -->';
 
 const FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23161a24'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='19' font-weight='800' text-anchor='middle' fill='%23FFD93D'%3EJ%3C/text%3E%3C/svg%3E";
 
@@ -136,7 +136,7 @@ ${ogImage ? `  <meta property="og:image" content="${esc(ogImage)}">\n  <meta nam
 }
 
 export function renderIssue(section, issue, prev, next) {
-  const url = `${section.site}/data-arts/issues/${issue.slug}/`;
+  const url = `${section.site}/data_arts/issues/${issue.slug}/`;
   const ogImage = issue.cover ? `${url}${issue.cover.src}` : null;
   const cover = issue.cover
     ? `
@@ -225,10 +225,10 @@ ${[...issues].reverse().map((it) => `      <li>
   return `${head({
     title: section.title,
     description: section.tagline,
-    canonical: `${section.site}/data-arts/`,
+    canonical: `${section.site}/data_arts/`,
     css: 'style.css',
     ogType: 'website',
-    ogImage: latest?.cover ? `${section.site}/data-arts/issues/${latest.slug}/${latest.cover.src}` : null,
+    ogImage: latest?.cover ? `${section.site}/data_arts/issues/${latest.slug}/${latest.cover.src}` : null,
     feedHref: 'feed.xml',
   })}
 <body>
@@ -256,7 +256,7 @@ ${latestBlock}${archive}
 
 export function renderFeed(section, issues) {
   const items = [...issues].reverse().map((it) => {
-    const url = `${section.site}/data-arts/issues/${it.slug}/`;
+    const url = `${section.site}/data_arts/issues/${it.slug}/`;
     return `    <item>
       <title>${esc(`Issue ${it.number}: ${it.title}`)}</title>
       <link>${url}</link>
@@ -270,8 +270,8 @@ export function renderFeed(section, issues) {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>${esc(section.title)}</title>
-    <link>${section.site}/data-arts/</link>
-    <atom:link href="${section.site}/data-arts/feed.xml" rel="self" type="application/rss+xml"/>
+    <link>${section.site}/data_arts/</link>
+    <atom:link href="${section.site}/data_arts/feed.xml" rel="self" type="application/rss+xml"/>
     <description>${esc(section.tagline)}</description>
     <language>en-us</language>
 ${last ? `    <lastBuildDate>${rfc822(last.date)}</lastBuildDate>\n` : ''}${items.join('\n')}${items.length ? '\n' : ''}  </channel>
@@ -282,22 +282,22 @@ ${last ? `    <lastBuildDate>${rfc822(last.date)}</lastBuildDate>\n` : ''}${item
 export function renderLandingBlock(section, issues) {
   const latest = issues[issues.length - 1];
   const card = latest
-    ? `    <a class="card issue-card" href="data-arts/issues/${latest.slug}/">
+    ? `    <a class="card issue-card" href="data_arts/issues/${latest.slug}/">
       <span class="tag">Issue ${latest.number} · ${prettyDate(latest.date)}</span>
       <span class="title">${esc(latest.title)}</span>
       <span class="sub">${esc(latest.dek)}</span>
       <span class="more">Read issue ${latest.number} &rarr;</span>
     </a>`
-    : `    <a class="card issue-card" href="data-arts/">
+    : `    <a class="card issue-card" href="data_arts/">
       <span class="tag">Weekly · Fridays</span>
       <span class="title">${esc(section.title)}</span>
       <span class="sub">${esc(section.tagline)}</span>
       <span class="more">Visit &rarr;</span>
     </a>`;
-  return `${MARK_START} (generated by data-arts/_tools/build.mjs: edit that, not this) -->
+  return `${MARK_START} (generated by data_arts/_tools/build.mjs: edit that, not this) -->
     <h2>${esc(section.title)}</h2>
 ${card}
-    <p class="issue-links"><a href="data-arts/">All issues</a> · <a href="data-arts/feed.xml">RSS</a> · New issues every Friday</p>
+    <p class="issue-links"><a href="data_arts/">All issues</a> · <a href="data_arts/feed.xml">RSS</a> · New issues every Friday</p>
     ${MARK_END}`;
 }
 
@@ -317,7 +317,7 @@ function main() {
     title: it.title,
     dek: it.dek,
     date: it.date,
-    url: `${section.site}/data-arts/issues/${it.slug}/`,
+    url: `${section.site}/data_arts/issues/${it.slug}/`,
     ...(it.source ? { source: it.source } : {}),
   })), null, 2)}\n`);
 
@@ -325,7 +325,7 @@ function main() {
   const landing = readFileSync(landingPath, 'utf8');
   const a = landing.indexOf(MARK_START);
   const b = landing.indexOf(MARK_END);
-  if (a < 0 || b < a) fail('index.html (repo root) has no data-arts:start / data-arts:end markers');
+  if (a < 0 || b < a) fail('index.html (repo root) has no data_arts:start / data_arts:end markers');
   put(landingPath, landing.slice(0, a) + renderLandingBlock(section, issues) + landing.slice(b + MARK_END.length));
 
   console.log(`build: ${issues.length} issue(s); latest ${issues.length ? `#${issues[issues.length - 1].number}` : 'none'}`);

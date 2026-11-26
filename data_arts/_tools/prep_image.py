@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Make an image web-ready for a Data Arts issue.
 
-    python3 -I data-arts/_tools/prep_image.py SOURCE DEST [--max-width 1600]
+    python3 -I data_arts/_tools/prep_image.py SOURCE DEST [--max-width 1600]
 
 - Applies the EXIF orientation, then drops ALL metadata (EXIF, GPS, XMP,
   ICC comments), so phone photos never publish where they were taken.

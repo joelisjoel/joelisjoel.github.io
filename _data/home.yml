@@ -100,12 +100,12 @@ sections:
         blurb: A 3D dragon take on Slither. Fly, eat, grow, and don't touch their tails.
         image: /images/skywyrm.jpg
         url: https://skywyrm.io/
-      - id: data-arts
+      - id: data_arts
         title: Data Arts Working Group
         meta: Weekly · Fridays
         blurb: Where data meets art. A new issue every Friday.
         image_hint: Image
-        url: /data-arts/
+        url: /data_arts/
         soon: true
       - id: dendros
         title: Dendros Labs

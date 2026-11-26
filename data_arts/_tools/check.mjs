@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Pre-publish checks for the Data Arts Working Group section. Run after
-// build.mjs and before every commit that touches data-arts/:
+// build.mjs and before every commit that touches data_arts/:
 //
-//   node data-arts/_tools/check.mjs
+//   node data_arts/_tools/check.mjs
 //
 // Fails loudly (exit 1) on:
 //   - generated files that are stale (rerun build.mjs)
@@ -11,6 +11,8 @@
 //   - images without alt text, or local links/images that point nowhere
 //   - images over 500 KB, issues over 4 MB, or photos that still carry
 //     EXIF/GPS metadata
+//   - file or folder names that aren't lowercase with underscores
+//     (data_arts/issues/001/assets/vis_poster.jpg, never vis-poster.jpg)
 //   - text that looks private: email addresses, phone numbers, SSN or card
 //     numbers, links into Google Drive/Docs, or "confidential"-style markers.
 //     An issue can allow a specific string by listing it in issue.json "allow".
@@ -38,19 +40,19 @@ const issues = loadIssues();
 
 function same(path, expected, label) {
   if (!existsSync(path) || readFileSync(path, 'utf8') !== expected) {
-    err(label, 'out of date; run node data-arts/_tools/build.mjs');
+    err(label, 'out of date; run node data_arts/_tools/build.mjs');
   }
 }
 
 issues.forEach((it, i) => {
   same(join(it.dir, 'index.html'), renderIssue(section, it, issues[i - 1], issues[i + 1]), `issues/${it.slug}/index.html`);
 });
-same(join(SECTION_DIR, 'index.html'), renderHome(section, issues), 'data-arts/index.html');
-same(join(SECTION_DIR, 'feed.xml'), renderFeed(section, issues), 'data-arts/feed.xml');
+same(join(SECTION_DIR, 'index.html'), renderHome(section, issues), 'data_arts/index.html');
+same(join(SECTION_DIR, 'feed.xml'), renderFeed(section, issues), 'data_arts/feed.xml');
 {
   const landing = readFileSync(join(ROOT_DIR, 'index.html'), 'utf8');
   if (!landing.includes(renderLandingBlock(section, issues))) {
-    err('index.html', 'Data Arts block is out of date; run node data-arts/_tools/build.mjs');
+    err('index.html', 'Data Arts block is out of date; run node data_arts/_tools/build.mjs');
   }
 }
 
@@ -151,6 +153,14 @@ for (const it of issues) {
     }
   }
   if (total > MAX_ISSUE) err(`issues/${it.slug}`, `issue is ${(total / 1048576).toFixed(1)} MB; keep under ${MAX_ISSUE / 1048576} MB`);
+}
+
+// ---------- 4b. file names: lowercase, digits and underscores only ----------
+
+const NAME_OK = /^[a-z0-9_]+(\.[a-z0-9]+)*$/;
+for (const f of walk(SECTION_DIR)) {
+  const bad = relative(SECTION_DIR, f).split(/[\\/]/).filter((seg) => !NAME_OK.test(seg));
+  if (bad.length) err(relative(ROOT_DIR, f), `file names use lowercase letters, digits and underscores (no hyphens or spaces): ${bad.join(', ')}`);
 }
 
 // ---------- 5. nothing that looks private ----------

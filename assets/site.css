@@ -610,7 +610,7 @@ main > :is(h1, h2, h3, h4, p, ul, ol, pre, table, blockquote, hr) {
 main > pre { overflow-x: auto; }
 
 /* Data Arts Working Group: latest-issue block written into index.html by
-   data-arts/_tools/build.mjs (markup comes from that script) */
+   data_arts/_tools/build.mjs (markup comes from that script) */
 .da-strip {
   margin: 0 0 32px;
   padding: 18px;

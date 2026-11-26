@@ -88,25 +88,6 @@ sections:
           engineering.
         image: /images/home/video-decision-engineering.jpg
         url: https://www.youtube.com/watch?v=q2ZdZNjGvws
-      - id: substack
-        title: "[First Substack post title]"
-        meta: Writing · Substack
-        blurb: "[Placeholder: one-line summary. Only a test post is on Substack so far.]"
-        image_hint: Post image
-        url: https://joelisjoel.substack.com/
-        todo: true
-      - id: x
-        title: Short takes on X
-        meta: "@joelisjoel"
-        blurb: Learning to surf the 🌊 of superintelligence, one post at a time.
-        icon: x
-        url: https://x.com/joelisjoel
-      - id: drum-circle
-        title: Drum circle
-        meta: Video · Burning Man 2007
-        blurb: A drum circle at Burning Man, 2007.
-        image: /images/home/video-drum-circle.jpg
-        url: https://www.youtube.com/watch?v=DatAb0CXzjY
 
   - id: projects
     title: Projects

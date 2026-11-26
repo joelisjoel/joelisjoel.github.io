@@ -98,8 +98,6 @@ summary:focus-visible {
   text-decoration: none;
 }
 
-
-
 /* ---------- Section tabs (sticky) ---------- */
 
 .tabs {
@@ -143,11 +141,39 @@ summary:focus-visible {
   border-bottom-color: var(--accent);
 }
 
+/* "Link me" sits at the right end of the tab bar as a small pill */
+.tabs .tab-end {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding-left: 8px;
+}
+
+.tabs a.linkme {
+  padding: 5px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.tabs a.linkme:hover { border-color: var(--accent); }
+
 /* Phones: four tabs share the width evenly */
 @media (max-width: 719px) {
-  .tabs ul { gap: 0; padding: 0 4px; }
+  .tabs ul { gap: 0; padding: 0 8px 0 4px; }
   .tabs li { flex: 1 0 auto; }
-  .tabs a { padding-left: 8px; padding-right: 8px; text-align: center; }
+  .tabs .tab-end { flex: 0 0 auto; padding-left: 4px; }
+  .tabs a { padding-left: 6px; padding-right: 6px; font-size: 0.95rem; text-align: center; }
+  .tabs a.linkme { padding: 4px 10px; font-size: 0.85rem; }
+}
+
+/* Smallest phones (320-380px): tighter still, so Link me stays on screen */
+@media (max-width: 380px) {
+  .tabs ul { padding: 0 6px 0 2px; }
+  .tabs a { padding-left: 4px; padding-right: 4px; font-size: 0.85rem; }
+  .tabs a.linkme { padding: 3px 8px; font-size: 0.78rem; }
 }
 
 /* ---------- Hero ---------- */

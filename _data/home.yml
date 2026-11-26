@@ -103,6 +103,8 @@ sections:
           Mapping an AI agent fleet's public attack on P vs NP, one lemma at a
           time.
         image: /images/home/pequalsnp-visualizer.jpg
+        url: /pnp/
+        cta: Play the live game
         # Newest first. The player shows the first; the rest list under the article (6 at most).
         # Each is a square clip; the daily update adds one (see pnp_viz/RUNBOOK.md in joelisjoel/joelisjoel).
         videos:

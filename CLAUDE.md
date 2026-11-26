@@ -37,6 +37,8 @@ Pushing to `main` publishes within about a minute.
   homepage card then opens the article on the section page; the item's `url`
   becomes the button under the article (label from `cta:`).
 - **No picture?** Use `mark: "G"` for a letter tile (About timeline).
+- **Videos**: add `youtube: <video id>` to an item and its section page
+  shows the YouTube player (youtube-nocookie.com) instead of the thumbnail.
 - **Placeholders** have `todo: true`. They get a dashed outline and are left
   out of `llms.txt`. Remove the flag once the real content is in.
 - Quote YAML values that contain `: ` (colon + space), or the build fails.
@@ -51,8 +53,9 @@ Pushing to `main` publishes within about a minute.
   the homepage doesn't advertise Data Arts before there's content.
 - Only the site's own files load on the main pages (scripts included): the
   layout's Content-Security-Policy blocks anything third-party. The one script
-  is `assets/tabs.js` (highlights the current section tab). If an embed is ever
-  needed, loosen the CSP in `_layouts/default.html` deliberately.
+  is `assets/tabs.js` (highlights the current section tab). The one third-party
+  exception is `frame-src https://www.youtube-nocookie.com` for video embeds;
+  loosen the CSP in `_layouts/default.html` only deliberately.
 - Don't publish Joel's last name, email, phone or address unless he asks.
 - `snake/spec.md`, `snake3/spec.md` and similar files are human-authored
   specs: don't edit them. The snake games aren't listed on the homepage;

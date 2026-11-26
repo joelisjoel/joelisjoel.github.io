@@ -18,6 +18,8 @@
 #   icon     instead of an image: x, linkedin, youtube, substack, github, instagram, tiktok
 #   image_hint  what picture is still needed (shown when there is no image)
 #   url      where the item lives (video, game, page)
+#   youtube  a YouTube video id: the section page shows the player itself
+#            (privacy-enhanced youtube-nocookie.com) instead of the thumbnail
 #   cta      label for the url's button on the section page (default "Open")
 #   soon     true = adds a "Coming soon" badge
 #   todo     true = placeholder you still need to fill in (dashed outline;
@@ -46,7 +48,7 @@ sections:
         blurb: The evolution from data engineering to decision engineering.
         image: /images/home/video-decision-engineering.jpg
         url: https://www.youtube.com/watch?v=q2ZdZNjGvws
-        cta: Watch on YouTube
+        youtube: q2ZdZNjGvws
         # Summary drawn from the video's description; replace with a
         # summary of the script when it's at hand.
         more: |

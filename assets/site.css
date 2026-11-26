@@ -529,6 +529,16 @@ a.status:hover { color: var(--ink); border-color: var(--accent); }
 
 .entry-list .entry-media .thumb { width: 96px; aspect-ratio: 1; }
 
+/* Embedded YouTube player: full width of the text column, 16:9 */
+.player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 12px;
+  background: var(--surface);
+}
+
 .entry-body { min-width: 0; max-width: 68ch; }
 
 .entry .meta { margin: 0 0 4px; }
@@ -580,6 +590,7 @@ a.status:hover { color: var(--ink); border-color: var(--accent); }
 @media (min-width: 720px) {
   .entry { grid-template-columns: 280px minmax(0, 1fr); gap: 28px; }
   .entry-list { grid-template-columns: 96px minmax(0, 1fr); gap: 20px; padding: 20px 0; }
+  .entry-video { grid-template-columns: minmax(0, 760px); }
 }
 
 .sub-h {

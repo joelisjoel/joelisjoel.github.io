@@ -80,15 +80,7 @@ summary:focus-visible {
 
 /* ---------- Top bar ---------- */
 
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
-}
+.topbar { background: var(--bg); }
 
 .topbar-in {
   display: flex;
@@ -107,44 +99,55 @@ summary:focus-visible {
 }
 
 
-.topbar nav { margin-left: auto; }
 
-.topbar nav ul {
+/* ---------- Section tabs (sticky) ---------- */
+
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.tabs ul {
   display: flex;
   gap: 4px;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
   list-style: none;
+  overflow-x: auto;          /* more sections than fit: the bar scrolls, not the page */
+  scrollbar-width: none;
 }
 
-.topbar nav a {
+.tabs ul::-webkit-scrollbar { display: none; }
+
+.tabs li { flex: 0 0 auto; }
+
+.tabs a {
   display: block;
-  padding: 6px 10px;
-  border-radius: 8px;
+  padding: 13px 12px 11px;
+  border-bottom: 2px solid transparent;
   color: var(--muted);
-  font-size: 0.95rem;
-  text-decoration: none;
-}
-
-.topbar nav a:hover,
-.topbar nav a[aria-current] { color: var(--ink); background: var(--glow); }
-
-.pill {
-  padding: 6px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-  font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.pill:hover { border-color: var(--accent); }
+.tabs a:hover { color: var(--ink); }
 
-/* Phones: section links live in the hero instead */
+.tabs a.active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* Phones: four tabs share the width evenly */
 @media (max-width: 719px) {
-  .topbar nav { display: none; }
-  .pill { margin-left: auto; }
+  .tabs ul { gap: 0; padding: 0 4px; }
+  .tabs li { flex: 1 0 auto; }
+  .tabs a { padding-left: 8px; padding-right: 8px; text-align: center; }
 }
 
 /* ---------- Hero ---------- */
@@ -221,39 +224,13 @@ summary:focus-visible {
   font-size: 1.15rem;
 }
 
-.jump {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 28px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.jump a {
-  display: block;
-  padding: 9px 16px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--surface);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.jump li:first-child a {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: var(--bg);
-}
-
-.jump a:hover { border-color: var(--accent); }
 
 /* ---------- Sections ---------- */
 
 .section {
   padding: 36px 0 8px;
   border-top: 1px solid var(--line);
-  scroll-margin-top: 64px;
+  scroll-margin-top: 50px;   /* lands just under the sticky tabs */
 }
 
 .section:first-child { border-top: 0; }

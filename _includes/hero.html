@@ -6,10 +6,5 @@
     {%- endif %}
     <h1>{{ h.headline_start }} <em>{{ h.headline_em }}</em></h1>
     <p class="intro">{{ h.intro }}</p>
-    <ul class="jump" aria-label="Jump to a section">
-      {%- for s in site.data.home.sections %}
-      <li><a href="#{{ s.id }}">{{ s.title }}</a></li>
-      {%- endfor %}
-    </ul>
   </div>
 </section>

@@ -11,7 +11,7 @@ Pushing to `main` publishes within about a minute.
 | `_data/home.yml` | **All homepage content**: hero, sections, items, social links |
 | `index.html` | Homepage template (hero + one block per section) |
 | `about/`, `thoughts/`, `projects/`, `archive/` | Section pages; each just names its section |
-| `_layouts/default.html` | Page shell: head, top bar, footer |
+| `_layouts/default.html` | Page shell: head, top bar, sticky section tabs, footer |
 | `_layouts/section.html` | Full section page: every item plus its `more` text |
 | `_includes/card.html` | One item card; `home-section.html` is one homepage section |
 | `_includes/icons/*.svg` | Brand icons (Simple Icons, CC0) |
@@ -42,9 +42,10 @@ Pushing to `main` publishes within about a minute.
   weekly Data Arts build rewrites the block between them, and
   `data-arts/_tools/check.mjs` link-checks `index.html` as plain HTML, so keep
   `src`/`href` attributes out of it (put markup in `_includes/`).
-- No scripts and no third-party requests on the main pages: the layout's
-  Content-Security-Policy blocks them. If an embed is ever needed, loosen the
-  CSP in `_layouts/default.html` deliberately.
+- Only the site's own files load on the main pages (scripts included): the
+  layout's Content-Security-Policy blocks anything third-party. The one script
+  is `assets/tabs.js` (highlights the current section tab). If an embed is ever
+  needed, loosen the CSP in `_layouts/default.html` deliberately.
 - Don't publish Joel's last name, email, phone or address unless he asks.
 - `snake/spec.md`, `snake3/spec.md` and similar files are human-authored
   specs: don't edit them.

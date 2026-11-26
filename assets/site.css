@@ -287,11 +287,18 @@ a.status:hover { color: var(--ink); border-color: var(--accent); }
 
 .section h2 a { text-decoration: none; }
 
+.section-head { margin-bottom: 20px; }
+
 .section-blurb {
   max-width: 62ch;
-  margin: 8px 0 20px;
+  margin: 8px 0 0;
   color: var(--muted);
 }
+
+/* Section pages: same gap whether or not there's a blurb */
+.page .section-blurb { margin-bottom: 20px; }
+
+.page h1 + .entries { margin-top: 24px; }
 
 .see-all {
   display: inline-block;

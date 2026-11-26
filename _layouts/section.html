@@ -9,7 +9,9 @@ layout: default
 <div class="wrap page">
   <p class="crumb"><a href="/">Home</a> <span aria-hidden="true">/</span> {{ s.title }}</p>
   <h1>{{ s.title }}</h1>
+  {%- if s.blurb %}
   <p class="section-blurb">{{ s.blurb }}</p>
+  {%- endif %}
   {%- if s.long %}
   <div class="long">{{ s.long | markdownify }}</div>
   {%- endif %}

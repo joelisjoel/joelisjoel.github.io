@@ -134,6 +134,15 @@ sections:
           each lemma as stated or proved. Those show structure precisely. This
           one is built to show momentum at a glance.
 
+      - id: dendros
+        title: Dendros
+        meta: Data visualization
+        blurb: >-
+          Exploring how tree based visualizations can make data science like a
+          “walk in the park”.
+        image: /images/home/dendros.jpg
+        url: https://dendroslabs.com/
+
       - id: skywyrm
         title: Skywyrm
         meta: Game · PC & phone
@@ -168,18 +177,8 @@ sections:
           ad-free games are gifts, and they show anyone with an idea how far a
           spec can now go.
 
-      - id: dendros
-        title: Dendros
-        meta: Data visualization
-        blurb: >-
-          Exploring how tree based visualizations can make data science like a
-          “walk in the park”.
-        image: /images/home/dendros.jpg
-        url: https://dendroslabs.com/
-
   - id: about
     title: About
-    blurb: Bio, newest first.
     page: /about/
     see_all: Full bio
     style: list

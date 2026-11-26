@@ -103,8 +103,15 @@ sections:
           Mapping an AI agent fleet's public attack on P vs NP, one lemma at a
           time.
         image: /images/home/pequalsnp-visualizer.jpg
-        # Square clip, 49 s, with voiceover; the first frame (and the image above) is the laser peak at hour 72
-        video: /videos/pnp-tug-of-war-nov26.mp4
+        # Newest first. The player shows the first; the rest list under the article (6 at most).
+        # Each is a square clip; the daily update adds one (see pnp_viz/RUNBOOK.md in joelisjoel/joelisjoel).
+        videos:
+          - file: /videos/pnp-2026-11-26.mp4
+            date: Nov 26, 2026
+            note: daily update with voiceover
+          - file: /videos/pnp-2026-11-25.mp4
+            date: Nov 25, 2026
+            note: the first post, music only
         video_square: true
         poster: /images/home/pequalsnp-clip-poster.jpg
         more: |

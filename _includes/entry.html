@@ -3,14 +3,17 @@
   Params: item, section.
 {%- endcomment -%}
 {%- assign it = include.item -%}
-<li class="entry{% if it.todo %} is-todo{% endif %}{% if include.section.style == 'list' %} entry-list{% endif %}{% if it.youtube or it.video %} entry-video{% endif %}" id="{{ it.id }}">
+{%- comment -%} A video file on this site: video: <file>, or videos: a newest-first list of {file, date, note} {%- endcomment -%}
+{%- assign vfile = it.video -%}
+{%- if it.videos %}{% assign vfile = it.videos.first.file %}{% endif -%}
+<li class="entry{% if it.todo %} is-todo{% endif %}{% if include.section.style == 'list' %} entry-list{% endif %}{% if it.youtube or vfile %} entry-video{% endif %}" id="{{ it.id }}">
   <div class="entry-media">
     {%- if it.youtube %}
     <iframe class="player" src="https://www.youtube-nocookie.com/embed/{{ it.youtube }}?rel=0" title="{{ it.title }} (YouTube video)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
-    {%- elsif it.video %}
-    {%- comment -%} A video file hosted on this site (allowed by the page's default-src 'self'); the thumbnail is its poster {%- endcomment %}
+    {%- elsif vfile %}
+    {%- comment -%} Hosted on this site (allowed by the page's default-src 'self'); poster defaults to the thumbnail {%- endcomment %}
     {%- assign poster = it.poster | default: it.image %}
-    <video class="player player-file{% if it.video_square %} player-square{% endif %}" src="{{ it.video }}"{% if poster %} poster="{{ poster }}"{% endif %} controls preload="none" playsinline title="{{ it.title }} (video)"></video>
+    <video class="player player-file{% if it.video_square %} player-square{% endif %}" src="{{ vfile }}"{% if poster %} poster="{{ poster }}"{% endif %} controls preload="none" playsinline title="{{ it.title }} (video)"></video>
     {%- elsif it.url %}<a href="{{ it.url }}"{% if it.url contains '://' %} rel="noopener"{% endif %} tabindex="-1" aria-hidden="true">{% include thumb.html item=it %}</a>
     {%- else %}{% include thumb.html item=it %}{% endif %}
   </div>
@@ -22,6 +25,16 @@
     <p class="entry-tagline">{{ it.blurb }}</p>
     {%- if it.more %}
     <div class="article">{{ it.more | markdownify }}</div>
+    {%- endif %}
+    {%- if it.videos.size > 1 %}
+    <div class="clips">
+      <p class="clips-title">Earlier clips</p>
+      <ul>
+        {%- for v in it.videos offset:1 limit:6 %}
+        <li><a href="{{ v.file }}">{{ v.date }}</a>{% if v.note %} · {{ v.note }}{% endif %}</li>
+        {%- endfor %}
+      </ul>
+    </div>
     {%- endif %}
     {%- if it.url and it.youtube == nil %}
     <a class="entry-cta" href="{{ it.url }}"{% if it.url contains '://' %} rel="noopener"{% endif %}>{{ it.cta | default: "Open" }} <span aria-hidden="true">{% if it.url contains '://' %}↗{% else %}→{% endif %}</span></a>

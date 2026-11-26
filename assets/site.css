@@ -574,6 +574,11 @@ a.status:hover { color: var(--ink); border-color: var(--accent); }
   aspect-ratio: 1;
   width: min(100%, 560px);
 }
+/* Earlier versions of an item's clip (videos: list), under its article */
+.clips { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 12px; }
+.clips-title { margin: 0 0 6px; font: 600 12px/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.clips ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; color: var(--muted); }
+.clips a { color: var(--accent); }
 
 .entry-body { min-width: 0; max-width: 68ch; }
 

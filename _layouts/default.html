@@ -19,9 +19,8 @@
   <meta property="og:title" content="{{ page.title | default: site.title }}">
   <meta property="og:description" content="{{ desc }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:image" content="{{ '/images/joel.jpg' | absolute_url }}">
   <meta name="twitter:card" content="summary">
-  <meta name="theme-color" content="#071A1C">
+  <meta name="theme-color" content="#000000">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B7E83'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='19' font-weight='800' text-anchor='middle' fill='%23FFFFFF'%3EJ%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="Summary for AI assistants">
@@ -33,7 +32,6 @@
       "name": "Joel",
       "alternateName": "joelisjoel",
       "url": "{{ site.url }}/",
-      "image": "{{ '/images/joel.jpg' | absolute_url }}",
       "description": {{ site.description | strip_newlines | jsonify }},
       "sameAs": [{% for e in site.data.home.elsewhere %}{{ e.url | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}]
     }
@@ -45,7 +43,7 @@
   <a class="skip" href="#main">Skip to content</a>
   <header class="topbar">
     <div class="wrap topbar-in">
-      <a class="brand" href="/"><img src="/images/joel.jpg" alt="" width="28" height="28">joelisjoel</a>
+      <a class="brand" href="/">joelisjoel</a>
       <nav aria-label="Sections">
         <ul>
           {%- for s in site.data.home.sections %}

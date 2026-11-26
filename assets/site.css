@@ -1,19 +1,20 @@
 /* joelisjoel.org: one stylesheet for the homepage and section pages.
-   Dark is the default for everyone. A light palette is kept below
-   (html data-theme="light") in case a theme switch is added later. */
+   Dark is the default for everyone: a black page with teal as a small
+   accent. A light palette is kept below (html data-theme="light") in case
+   a theme switch is added later. */
 
 :root {
   color-scheme: dark;
-  --bg: #071A1C;
-  --surface: #0C2427;
-  --ink: #E6F6F5;
-  --muted: #9DB9BB;
-  --line: #1C3B3E;
-  --accent: #5FD3D6;        /* text-safe teal on the dark background */
+  --bg: #000000;
+  --surface: #0C0C0D;
+  --ink: #EDEDED;
+  --muted: #9B9B9B;          /* 7.6:1 on black */
+  --line: #232326;
+  --accent: #5FD3D6;        /* teal, used sparingly: links, kickers, hovers */
   --accent-soft: #29C2C7;   /* brand teal, decorative */
-  --glow: rgba(41, 194, 199, 0.16);
-  --grid: rgba(95, 211, 214, 0.07);
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+  --glow: rgba(41, 194, 199, 0.11);
+  --grid: rgba(255, 255, 255, 0.035);
+  --shadow: none;
   --radius: 14px;
   --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -105,11 +106,6 @@ summary:focus-visible {
   text-decoration: none;
 }
 
-.brand img {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-}
 
 .topbar nav { margin-left: auto; }
 
@@ -200,25 +196,10 @@ summary:focus-visible {
   box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
 }
 
-.greeting {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 28px 0 10px;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.greeting img {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--accent-soft);
-}
 
 .hero h1 {
   max-width: 15ch;
-  margin: 0;
+  margin: 28px 0 0;
   font-size: clamp(2.3rem, 8.4vw, 4.4rem);
   font-weight: 800;
   line-height: 1.04;

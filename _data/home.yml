@@ -21,8 +21,6 @@
 hero:
   status: "Now building Skywyrm, a 3D dragon game"
   status_url: https://skywyrm.io/
-  photo: /images/joel.jpg
-  greeting: "Hi, I'm Joel."
   headline_start: "Learning to surf the wave of"
   headline_em: "superintelligence."
   # Draft written from your X bio, YouTube and projects. Edit freely.

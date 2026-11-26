@@ -8,12 +8,13 @@ Pushing to `main` publishes within about a minute.
 
 | Path | What |
 |---|---|
-| `_data/home.yml` | **All homepage content**: hero, sections, items, social links |
+| `_data/home.yml` | **All homepage content**: hero, sections, items, articles, social links. The copy comes from Joel's "Joel Is Joel Visual Resume" deck (Google Slides); keep the deck's order |
 | `index.html` | Homepage template (hero + one block per section) |
 | `about/`, `thoughts/`, `projects/`, `archive/` | Section pages; each just names its section |
 | `_layouts/default.html` | Page shell: head, top bar, sticky section tabs, footer |
 | `_layouts/section.html` | Full section page: every item plus its `more` text |
-| `_includes/card.html` | One item card; `home-section.html` is one homepage section |
+| `_includes/card.html` | One homepage card; `home-section.html` is one homepage section; `thumb.html` is the shared thumbnail (image, letter mark or icon) |
+| `_includes/entry.html` | One item on a section page: thumbnail, tagline, full article (`more`, Markdown) and its link button (`cta`) |
 | `_includes/icons/*.svg` | Brand icons (Simple Icons, CC0) |
 | `assets/site.css` | All styles; dark by default (a light palette is kept for a future switch) |
 | `images/home/` | Card thumbnails, 640x360 JPEG |
@@ -32,6 +33,10 @@ Pushing to `main` publishes within about a minute.
   `projects/index.html`).
 - **Images**: 640x360 JPEG in `images/home/`; strip metadata (location!)
   before committing. About-section images show square.
+- **Articles**: put ~200 words of Markdown in an item's `more:`. The
+  homepage card then opens the article on the section page; the item's `url`
+  becomes the button under the article (label from `cta:`).
+- **No picture?** Use `mark: "G"` for a letter tile (About timeline).
 - **Placeholders** have `todo: true`. They get a dashed outline and are left
   out of `llms.txt`. Remove the flag once the real content is in.
 - Quote YAML values that contain `: ` (colon + space), or the build fails.
@@ -41,14 +46,17 @@ Pushing to `main` publishes within about a minute.
 - `index.html` must keep the `data_arts:start` / `data_arts:end` markers: the
   weekly Data Arts build rewrites the block between them, and
   `data_arts/_tools/check.mjs` link-checks `index.html` as plain HTML, so keep
-  `src`/`href` attributes out of it (put markup in `_includes/`).
+  `src`/`href` attributes out of it (put markup in `_includes/`). The
+  block is only shown once it links to an issue (`data_arts/issues/`), so
+  the homepage doesn't advertise Data Arts before there's content.
 - Only the site's own files load on the main pages (scripts included): the
   layout's Content-Security-Policy blocks anything third-party. The one script
   is `assets/tabs.js` (highlights the current section tab). If an embed is ever
   needed, loosen the CSP in `_layouts/default.html` deliberately.
 - Don't publish Joel's last name, email, phone or address unless he asks.
 - `snake/spec.md`, `snake3/spec.md` and similar files are human-authored
-  specs: don't edit them.
+  specs: don't edit them. The snake games aren't listed on the homepage;
+  Joel wants them linked only from the Skywyrm article.
 
 ## Preview locally
 

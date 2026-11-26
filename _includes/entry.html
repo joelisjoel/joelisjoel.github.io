@@ -1,0 +1,24 @@
+{%- comment -%}
+  One item on a section page: thumbnail, tagline and the full article.
+  Params: item, section.
+{%- endcomment -%}
+{%- assign it = include.item -%}
+<li class="entry{% if it.todo %} is-todo{% endif %}{% if include.section.style == 'list' %} entry-list{% endif %}" id="{{ it.id }}">
+  <div class="entry-media">
+    {%- if it.url %}<a href="{{ it.url }}"{% if it.url contains '://' %} rel="noopener"{% endif %} tabindex="-1" aria-hidden="true">{% include thumb.html item=it %}</a>
+    {%- else %}{% include thumb.html item=it %}{% endif %}
+  </div>
+  <div class="entry-body">
+    {%- if it.meta or it.soon %}
+    <p class="meta">{{ it.meta }}{% if it.soon %} <span class="badge">Coming soon</span>{% endif %}</p>
+    {%- endif %}
+    <h2 class="entry-title">{{ it.title }}</h2>
+    <p class="entry-tagline">{{ it.blurb }}</p>
+    {%- if it.more %}
+    <div class="article">{{ it.more | markdownify }}</div>
+    {%- endif %}
+    {%- if it.url %}
+    <a class="entry-cta" href="{{ it.url }}"{% if it.url contains '://' %} rel="noopener"{% endif %}>{{ it.cta | default: "Open" }} <span aria-hidden="true">{% if it.url contains '://' %}↗{% else %}→{% endif %}</span></a>
+    {%- endif %}
+  </div>
+</li>

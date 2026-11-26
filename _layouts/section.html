@@ -2,7 +2,7 @@
 layout: default
 ---
 {%- comment -%}
-  A full section page: every item, with the longer "more" text.
+  A full section page: every item with its tagline and article.
   The page's front matter sets `section:` to a section id from _data/home.yml.
 {%- endcomment -%}
 {%- assign s = site.data.home.sections | where: "id", page.section | first -%}
@@ -13,9 +13,9 @@ layout: default
   {%- if s.long %}
   <div class="long">{{ s.long | markdownify }}</div>
   {%- endif %}
-  <ul class="cards cards-wide">
+  <ul class="entries">
     {%- for item in s.items %}
-    {% include card.html item=item section=s wide=true %}
+    {% include entry.html item=item section=s %}
     {%- endfor %}
   </ul>
   {{ content }}

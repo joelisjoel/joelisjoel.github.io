@@ -1,171 +1,268 @@
 # Everything on the homepage and the section pages comes from this file.
+# Source of truth for the copy: the "Joel Is Joel Visual Resume" deck in
+# Google Slides (sections and items in the deck's order).
 #
 # To add something: copy an item, paste it where you want it in the list,
 # and change the fields. The homepage shows the first 3 items of each section
 # and folds the rest under "Show N more". Section pages show everything.
 #
 # Item fields
-#   id       short unique name, used for links like /projects/#fire
+#   id       short unique name, used for links like /projects/#skywyrm
 #   title    required
-#   meta     small line above the title (type · date)
-#   blurb    one or two sentences
-#   more     optional longer text, shown on the section page only
-#   image    /images/home/<name>.jpg, 640x360 (16:9); square-ish for About
+#   meta     small line above the title (dates, type)
+#   blurb    the tagline on the homepage card (one or two sentences)
+#   more     optional article (Markdown, ~200 words) shown on the section
+#            page. When an item has one, its homepage card opens the article.
+#   image    /images/home/<name>.jpg: 640x360 (16:9), or 400x400 for About
+#   mark     instead of an image: a few letters shown as a tile (e.g. "G")
 #   icon     instead of an image: x, linkedin, youtube, substack, github, instagram, tiktok
 #   image_hint  what picture is still needed (shown when there is no image)
-#   url      where the card goes; leave out to link to the section page
+#   url      where the item lives (video, game, page)
+#   cta      label for the url's button on the section page (default "Open")
 #   soon     true = adds a "Coming soon" badge
 #   todo     true = placeholder you still need to fill in (dashed outline;
 #            left out of llms.txt). Search this file for "todo: true".
 
 hero:
   status: "Now building a P≠NP proof visualizer"
-  # status_url: add a link here once the visualizer has a page
+  status_url: https://pequalnp.com/
   headline_start: "Let's learn to surf the wave of"
   headline_em: "superintelligence."
-  intro: >-
-    This is Joel's “just for fun” page with writing, philosophy and fun
-    projects.
-  # The hand-off for anyone here on business
-  work_label: "Pros: check out LinkedIn"
-  work_url: https://www.linkedin.com/in/joelisjoel
+  # One line per line on the page
+  intro: |-
+    Currently on leave from Google to take care of family business.
+    This is Joel's “just for fun” page with writing, philosophy and fun projects.
 
 sections:
-  - id: about
-    title: About
-    blurb: The fun side lives here. The professional side lives on LinkedIn.
-    page: /about/
-    see_all: More about me
-    style: list
-    # Longer text for /about/ (Markdown)
-    long: >-
-      This site is for art, games and experiments. For my professional
-      background, roles and how to reach me about work, see
-      [my LinkedIn profile](https://www.linkedin.com/in/joelisjoel).
-    items:
-      - id: work
-        title: Work & career
-        meta: LinkedIn
-        blurb: Roles, experience, and the best way to reach me about work.
-        icon: linkedin
-        url: https://www.linkedin.com/in/joelisjoel
-      - id: kissme
-        title: Co-creator, KissMe on Facebook
-        meta: Stanford · 2007–2009
-        blurb: >-
-          The first app from Stanford's Facebook class to pass a million
-          installs, spread by simple direct messages.
-        more: >-
-          Planned as a meetup planner for Full Moon on the Quad, KissMe became
-          a simple way to show affection on Facebook. The video maps its viral
-          growth from October 2007 to October 2009.
-        image: /images/home/video-kissme.jpg
-        url: https://www.youtube.com/watch?v=1nREHPymu_0
-
   - id: thoughts
     title: Thoughts
-    blurb: Videos and writing on AI, data, and whatever I'm exploring.
+    blurb: Unpolished musings and short videos.
     page: /thoughts/
     see_all: All thoughts
     items:
       - id: decision-engineering
-        title: Toward decision engineering
-        meta: Video · Sep 2026
-        blurb: >-
-          Moats in an AI-powered world, from customer service to data gravity
-          to systems of record. We're moving from data engineering to decision
-          engineering.
+        title: Decision Engineering
+        meta: Video · 3 min
+        blurb: The evolution from data engineering to decision engineering.
         image: /images/home/video-decision-engineering.jpg
         url: https://www.youtube.com/watch?v=q2ZdZNjGvws
+        cta: Watch on YouTube
+        # Summary drawn from the video's description; replace with a
+        # summary of the script when it's at hand.
+        more: |
+          A three-minute look at what still counts as a moat once AI can do
+          the work. The argument moves from customer service, through data
+          gravity, to the system of record: the place where a business writes
+          down what is true.
+
+          The claim is that owning that record is the durable advantage, and
+          that the people who build on it are changing jobs. Data engineering
+          was about moving and shaping data so that people could decide. As AI
+          starts to make and carry out decisions, the work becomes decision
+          engineering: choosing which decisions to automate, on what evidence,
+          and how their outcomes flow back into the record.
+
+      - id: pascals-bunker
+        title: Pascal's Bunker
+        meta: Video · 3 min
+        blurb: >-
+          If AI ends the world, will building a bunker help? The parallel
+          between the possibility of a digital god and Pascal's wager.
+        image: /images/home/video-pascals-bunker.jpg
+        more: |
+          In 1642 a nineteen-year-old named Blaise Pascal built a machine that
+          did arithmetic. Later he made a famous bet on something smarter than
+          himself: believe, because if you're right the reward is infinite and
+          if you're wrong you lose almost nothing.
+
+          Today's version is Pascal's Bunker: assume the worst about AI and
+          make one move you can't undo. Quit your field, stop saving, move to
+          the woods. It sits at the top of a ladder we're already climbing.
+          Does my project still matter? Will my team survive? Is my whole
+          profession next? Are humans needed at all? Every rung sounded crazy
+          until it didn't, and most of us are on two and three.
+
+          The bunker doesn't protect you from the future; it protects you from
+          the waiting. So ask Pascal's own question: how much does your choice
+          change the outcome? If AI ends the world, a bunker won't save you. If
+          it saves the world, you never needed one. Choices matter in the
+          middle, where AI takes jobs and the world goes on. The worriers are
+          right to worry, and wrong about the bet.
+
+          The good moves are boring, and they pay off either way: learn to
+          direct AI in your field, get close to where decisions get made, keep
+          saving. Then write a tripwire. If that empty seat on your team is
+          still empty in six months and the work still gets done, ask to run
+          whatever is doing it. Pascal bet on heaven, but in his last year he
+          helped launch Paris's first bus line. Bet on the middle.
 
   - id: projects
     title: Projects
-    blurb: What I'm building now.
+    blurb: Things I'm working on recently.
     page: /projects/
     see_all: All projects
     items:
-      - id: fire
-        title: Fremont Institute of Robotics Education
-        meta: Robotics club · Fremont
-        blurb: "[Placeholder: what FIRE is and your part in it.]"
-        more: "[Placeholder: a longer write-up, plus a link to the club's own site if it has one.]"
-        image_hint: Team photo or logo
-        todo: true
       - id: skywyrm
         title: Skywyrm
         meta: Game · PC & phone
-        blurb: A 3D dragon take on Slither. Fly, eat, grow, and don't touch their tails.
-        image: /images/skywyrm.jpg
+        blurb: Exploring the limits of vibe coded games and autonomous growth loops.
+        image: /images/home/skywyrm.jpg
         url: https://skywyrm.io/
-      - id: data_arts
-        title: Data Arts Working Group
-        meta: Weekly · Fridays
-        blurb: Where data meets art. A new issue every Friday.
-        image_hint: Image
-        url: /data_arts/
-        soon: true
-      - id: dendros
-        title: Dendros Labs
-        meta: Data explorations
-        blurb: Living data trees, grown from real datasets and git histories.
-        image: /images/home/datatree2.jpg
-        url: https://dendroslabs.com/
-        soon: true
+        cta: Play at skywyrm.io
+        more: |
+          Skywyrm started as snake. In 2025 the snake games were built by
+          writing a careful spec and handing it to a chat model: a Tron-style
+          board, a snake's-eye camera, a soundtrack, all in one HTML file.
+          [Snake 2.5D](/snake/) stacked a top view over a first-person view;
+          [Snake 3D](/snake3/) split the arena into four viewports. The code
+          still carries the model's confusion about the spec in its comments,
+          and the specs carry a firm note: human-authored, AI makes no edits.
+
+          ![Snake 3D, 2025: one arena seen four ways](/images/home/snake3.jpg)
+
+          The Snake 3D roadmap listed five ideas: 3D movement, a spherical
+          arena, visual effects, an AI player and multiplayer. Skywyrm has all
+          five. Dragons fly freely, "The Orb" is a zero-G sphere with no up or
+          down, bots fill the sky, and anyone can open a server and invite a
+          friend. It runs free in the browser with no sign-up, no ads and no
+          tracking. The difference is the method: agents that plan, build,
+          test and ship across many sessions, rather than one prompt at a time.
+
+          Can a game like this run its own AI-driven growth loop yet? Building
+          is now cheap, but the loop still breaks in two places. Agents can't
+          yet feel what's fun, so taste comes from people playing. And growth
+          needs measurement, which pulls against a game that deliberately
+          tracks no one. Can games built this way add value? Small, free,
+          ad-free games are gifts, and they show anyone with an idea how far a
+          spec can now go.
+
+  - id: about
+    title: About
+    blurb: Bio, newest first.
+    page: /about/
+    see_all: Full bio
+    style: list
+    items:
+      - id: family-business
+        title: Family business
+        meta: 2026–present
+        blurb: >-
+          Learning the ropes of financial engineering, estate planning and
+          more. LP, some angel investing.
+        image: /images/home/family.jpg
+      - id: fire
+        title: Fremont Institute of Robotics Education
+        meta: 2023–present · Community service
+        blurb: >-
+          Lead mentor for over fifty high-school students on FIRST Robotics
+          team 9470. Winner of the Archimedes division and a top 1% team in
+          2026.
+        image: /images/home/fire.jpg
+      - id: google
+        title: Google
+        meta: 2008–2026
+        blurb: >-
+          18 years of experience in software and engineering management.
+          Co-founded teams like Search Analysis, Growth Engineering, Attention,
+          Bard Analytics and Data Engineering.
+        mark: G
+      - id: stanford
+        title: Stanford University
+        meta: 2005–2008 · MSEE
+        blurb: >-
+          MSEE, retraining from hardware to software, including early AI and
+          ML. Stanford Pain Lab. CCRMA.
+        mark: S
+      - id: juniper
+        title: Juniper Networks
+        meta: 1999–2005
+        blurb: >-
+          Designed networking hardware and systems including the M160 and T640
+          routers. Specialized in optical networking, especially multimode
+          VCSEL routing. PCB and FPGA design. 10G networking and signal
+          integrity.
+        mark: JN
+      - id: sgi
+        title: Silicon Graphics
+        meta: 1996–1999
+        blurb: >-
+          Signal integrity for the Beast microprocessor, rack systems and
+          HIPPI-6400. Chip and PCB design.
+        mark: SGI
+      - id: ucsc
+        title: UC Santa Cruz
+        meta: 1992–1997 · PhD
+        blurb: >-
+          PhD. Thesis: Cost-Effective Architectures of Field-Programmable
+          Multichip Modules.
+        mark: UCSC
+      - id: ucsb
+        title: UC Santa Barbara
+        meta: 1986–1991 · BS
+        blurb: BS Electrical Engineering. Control systems, robotics, Japanese.
+        mark: UCSB
 
   - id: archive
     title: Archive
-    blurb: Past projects and toys. Most run right in your browser.
+    blurb: Earlier experiments in vibe coding. Both run in your browser.
     page: /archive/
     see_all: The full archive
     items:
+      - id: world-pulse
+        title: World Pulse
+        meta: 3D globe · 2025
+        blurb: Vibe coded visualization of top world events.
+        image: /images/home/world-pulse.jpg
+        url: /worldview/
+        cta: Spin the globe
+        more: |
+          World Pulse is a spinning Earth with a handful of news events pinned
+          where they happened, each glowing by category and intensity. It was
+          vibe coded in 2025 from a description, and it shows both sides of
+          that: a convincing 3D globe in an afternoon, and events typed in by
+          hand. For a while the live globe showed no events at all, because
+          it was still loading them from the builder's own laptop.
+
+          The better versions of this idea today don't stop at the picture.
+          They pull from live news and event feeds, cluster related stories,
+          update on their own and say where each claim came from. The globe
+          is the easy part; trustworthy, current data and the judgment about
+          what matters are the hard parts.
+
+          That's the real lesson of being able to assemble a vision quickly.
+          When a working prototype costs an afternoon, code stops being the
+          scarce thing. What's scarce is the data pipeline behind the
+          picture, the taste to know which picture is worth making, and the
+          discipline to keep it true after the demo.
+
       - id: metacube
         title: Metacube
         meta: 3D · three.js
-        blurb: "A floating cube with a tiny world on each face: chess, a Mandelbrot landscape, a clock, an Escher room and more."
+        blurb: Exploration of vibe coding visualizations with chat and no-look coding.
         image: /images/home/metacube.jpg
         url: /metacube/
-      - id: snake3
-        title: Snake 3D
-        meta: Game · keyboard
-        blurb: "Snake in a box, seen four ways at once: top, west, north and through the snake's own eyes."
-        image: /images/home/snake3.jpg
-        url: /snake3/
-      - id: world-pulse
-        title: World Pulse
-        meta: 3D globe
-        blurb: A spinning Earth with news events pinned where they happened.
-        image: /images/home/worldview.jpg
-        url: /worldview/
-      - id: snake
-        title: Snake 2.5D
-        meta: Game · keyboard
-        blurb: Classic snake from above, plus a snake's-eye view underneath.
-        image: /images/home/snake.jpg
-        url: /snake/
-      - id: datatree
-        title: Data Tree
-        meta: Dendros Labs
-        blurb: "Tree zero: the living data tree."
-        image: /images/home/datatree.jpg
-        url: https://dendroslabs.com/datatree/
-      - id: datatree2
-        title: Data Tree 2
-        meta: Dendros Labs
-        blurb: A data tree that grows in stages, replayed.
-        image: /images/home/datatree2.jpg
-        url: https://dendroslabs.com/datatree2/
-      - id: docstree
-        title: Docs Tree
-        meta: Dendros Labs
-        blurb: The Dendros Labs site itself, grown from its git history.
-        image: /images/home/docstree.jpg
-        url: https://dendroslabs.com/datatree2/dendros/
-      - id: cube
-        title: Cube Demo
-        meta: 3D · three.js
-        blurb: "Where it all started: one shiny emerald cube, rotating."
-        image: /images/home/cube.jpg
-        url: /cube/
+        cta: Spin the cube
+        more: |
+          Metacube began as a single rotating emerald cube and grew, one chat
+          at a time, into six tiny worlds: a chessboard, a breathing Mandelbrot
+          landscape, a mechanical clock with a real going train, a robot
+          workshop with a volumetric hologram, Escher's *Relativity* with
+          figures walking its stairs, and a strange-loop knot. It was built by
+          describing scenes and judging screenshots, without reading the code.
+
+          The strength of that approach is range. Words alone produced real
+          gear ratios, momentum-based rotation and shadows that most people
+          couldn't hand-code in a weekend. The weaknesses show in its own
+          design notes: every face animates at full detail all the time,
+          helper code is copy-pasted between faces, there are no tests, and
+          the touch-drag direction was "fixed" twice, in opposite directions,
+          because nobody was reading what changed.
+
+          Done again today, the same vision would come with the engineering
+          built in: agents that render each face and compare screenshots,
+          write tests, pull shared code into a library and hold a performance
+          budget for phones. The human job moves from typing prompts to
+          setting constraints and reviewing results.
 
 # Footer and About page
 elsewhere:

@@ -562,6 +562,18 @@ a.status:hover { color: var(--ink); border-color: var(--accent); }
   border-radius: 12px;
   background: var(--surface);
 }
+/* A video file on this site: its own shape, never taller than the screen */
+.player-file {
+  aspect-ratio: auto;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+}
+/* Square clips (video_square: true) keep their shape before and after they load */
+.player-square {
+  aspect-ratio: 1;
+  width: min(100%, 560px);
+}
 
 .entry-body { min-width: 0; max-width: 68ch; }
 

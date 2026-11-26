@@ -3,10 +3,14 @@
   Params: item, section.
 {%- endcomment -%}
 {%- assign it = include.item -%}
-<li class="entry{% if it.todo %} is-todo{% endif %}{% if include.section.style == 'list' %} entry-list{% endif %}{% if it.youtube %} entry-video{% endif %}" id="{{ it.id }}">
+<li class="entry{% if it.todo %} is-todo{% endif %}{% if include.section.style == 'list' %} entry-list{% endif %}{% if it.youtube or it.video %} entry-video{% endif %}" id="{{ it.id }}">
   <div class="entry-media">
     {%- if it.youtube %}
     <iframe class="player" src="https://www.youtube-nocookie.com/embed/{{ it.youtube }}?rel=0" title="{{ it.title }} (YouTube video)" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+    {%- elsif it.video %}
+    {%- comment -%} A video file hosted on this site (allowed by the page's default-src 'self'); the thumbnail is its poster {%- endcomment %}
+    {%- assign poster = it.poster | default: it.image %}
+    <video class="player player-file{% if it.video_square %} player-square{% endif %}" src="{{ it.video }}"{% if poster %} poster="{{ poster }}"{% endif %} controls preload="none" playsinline title="{{ it.title }} (video)"></video>
     {%- elsif it.url %}<a href="{{ it.url }}"{% if it.url contains '://' %} rel="noopener"{% endif %} tabindex="-1" aria-hidden="true">{% include thumb.html item=it %}</a>
     {%- else %}{% include thumb.html item=it %}{% endif %}
   </div>

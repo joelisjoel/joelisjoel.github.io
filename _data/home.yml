@@ -103,36 +103,33 @@ sections:
           Mapping an AI agent fleet's public attack on P vs NP, one lemma at a
           time.
         image: /images/home/pequalsnp-visualizer.jpg
+        # Square clip, 49 s, with voiceover; the first frame (and the image above) is the laser peak at hour 72
+        video: /videos/pnp-tug-of-war-nov26.mp4
+        video_square: true
+        poster: /images/home/pequalsnp-clip-poster.jpg
         more: |
           P vs NP asks whether every problem whose answer is easy to check is
           also easy to solve. [pequalnp.com](https://pequalnp.com/), a project
           by Amichai and Lior built in Brilliant, is attacking it in public
-          with a fleet of AI agents. Orchestrators take lemmas inside research
-          programs, a red team hunts for counterexamples, a barrier desk tests
-          each idea against the known walls, and the Lean proof checker is the
-          only judge of what counts. Every step and dead end stays on the
-          record.
+          with a fleet of AI agents, and the Lean proof checker is the only
+          judge of what counts.
 
-          This visualizer turns that record into one picture. Each lemma is a
-          dot, filed in a lane by program (circuit bounds, proof complexity,
-          geometric complexity theory and a few meta topics) and pushed left
-          or right by the answer its program aims at. Lines trace chains of
-          lemmas toward each program's target. One snapshot, on November 24:
-          251 toward P ≠ NP, none toward P = NP, and 3,072 in a grey middle.
+          The visualizer draws that record as a tug of war. Lemmas line up on
+          the side of the answer they support, one rope per theme. Open claims
+          stand at the front and checked ones farther back, and every lemma
+          stands in front of whatever it rests on, so each chain reads as a
+          stack. Gold marks recent activity. Kills are lasers: the project
+          refutes a lemma by proving its exact opposite. The claim itself is
+          the knot at midfield that every rope ties into.
 
-          How well does it show progress? It shows effort and shape: which
-          fronts are busy, which have stalled, and where chains are reaching
-          for a target. It can't show distance, because nobody knows how far
-          away the answer is, and a lopsided count is easy to misread as odds.
-          The project itself calls its tally "a count, not a probability." A
-          lemma that completes a chain also looks just like a routine sanity
-          check; sizing dots by how much rests on them would help.
+          As of November 26, 11,176 lemmas were checked. None pulls toward
+          P = NP, and no lemma even states P ≠ NP. Each program's target is a
+          stepping stone rather than the claim, so the knot hasn't moved, and
+          the picture shows effort and shape, not distance. The project calls
+          its own tally "a count, not a probability."
 
-          The alternatives are pequalnp's own views (a board of every lemma, a
-          dependency graph, a calendar and a graveyard of dead approaches) and
-          the dependency "blueprints" Lean formalization projects use to mark
-          each lemma as stated or proved. Those show structure precisely. This
-          one is built to show momentum at a glance.
+          The clip above is a daily update with voiceover: what changed since
+          the last snapshot.
 
       - id: dendros
         title: Dendros

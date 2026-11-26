@@ -1,0 +1,210 @@
+# Everything on the homepage and the section pages comes from this file.
+#
+# To add something: copy an item, paste it where you want it in the list,
+# and change the fields. The homepage shows the first 3 items of each section
+# and folds the rest under "Show N more". Section pages show everything.
+#
+# Item fields
+#   id       short unique name, used for links like /projects/#fire
+#   title    required
+#   meta     small line above the title (type · date)
+#   blurb    one or two sentences
+#   more     optional longer text, shown on the section page only
+#   image    /images/home/<name>.jpg, 640x360 (16:9); square-ish for About
+#   icon     instead of an image: x, linkedin, youtube, substack, github, instagram, tiktok
+#   image_hint  what picture is still needed (shown when there is no image)
+#   url      where the card goes; leave out to link to the section page
+#   soon     true = adds a "Coming soon" badge
+#   todo     true = placeholder you still need to fill in (dashed outline;
+#            left out of llms.txt). Search this file for "todo: true".
+
+hero:
+  status: "Now building Skywyrm, a 3D dragon game"
+  status_url: https://skywyrm.io/
+  photo: /images/joel.jpg
+  greeting: "Hi, I'm Joel."
+  headline_start: "Learning to surf the wave of"
+  headline_em: "superintelligence."
+  # Draft written from your X bio, YouTube and projects. Edit freely.
+  intro: >-
+    I build at the edges of data, AI and play: from a Facebook app that
+    passed a million installs in 2007, to living data trees, a 3D dragon game
+    and a robotics club in Fremont. This is where I keep what I'm thinking
+    about, what I'm making, and what I've made.
+
+sections:
+  - id: about
+    title: About
+    blurb: "[Placeholder: two or three sentences paraphrasing your LinkedIn headline and About.]"
+    page: /about/
+    see_all: More about me
+    style: list
+    # Longer bio for /about/. Placeholder until you send LinkedIn text.
+    long: >-
+      [Placeholder: a longer bio, three or four short paragraphs. Paste your
+      LinkedIn About and Experience (or a resume) and I'll paraphrase it here.]
+    items:
+      - id: now
+        title: "[Current role]"
+        meta: "[Company] · [Years]"
+        blurb: "[One line on what you do there.]"
+        image_hint: Logo
+        todo: true
+      - id: before
+        title: "[Previous role]"
+        meta: "[Company] · [Years]"
+        blurb: "[One line on what you did there.]"
+        image_hint: Logo
+        todo: true
+      - id: kissme
+        title: Co-creator, KissMe on Facebook
+        meta: Stanford · 2007–2009
+        blurb: >-
+          The first app from Stanford's Facebook class to pass a million
+          installs, spread by simple direct messages.
+        more: >-
+          Planned as a meetup planner for Full Moon on the Quad, KissMe became
+          a simple way to show affection on Facebook. The video maps its viral
+          growth from October 2007 to October 2009.
+        image: /images/home/video-kissme.jpg
+        url: https://www.youtube.com/watch?v=1nREHPymu_0
+      - id: school
+        title: "[Education]"
+        meta: "[School] · [Degree] · [Years]"
+        blurb: "[Optional one line.]"
+        image_hint: Logo
+        todo: true
+
+  - id: thoughts
+    title: Thoughts
+    blurb: Videos and writing on AI, data, and whatever I'm exploring.
+    page: /thoughts/
+    see_all: All thoughts
+    items:
+      - id: decision-engineering
+        title: Toward decision engineering
+        meta: Video · Sep 2026
+        blurb: >-
+          Moats in an AI-powered world, from customer service to data gravity
+          to systems of record. We're moving from data engineering to decision
+          engineering.
+        image: /images/home/video-decision-engineering.jpg
+        url: https://www.youtube.com/watch?v=q2ZdZNjGvws
+      - id: substack
+        title: "[First Substack post title]"
+        meta: Writing · Substack
+        blurb: "[Placeholder: one-line summary. Only a test post is on Substack so far.]"
+        image_hint: Post image
+        url: https://joelisjoel.substack.com/
+        todo: true
+      - id: x
+        title: Short takes on X
+        meta: "@joelisjoel"
+        blurb: Learning to surf the 🌊 of superintelligence, one post at a time.
+        icon: x
+        url: https://x.com/joelisjoel
+      - id: drum-circle
+        title: Drum circle
+        meta: Video · Burning Man 2007
+        blurb: A drum circle at Burning Man, 2007.
+        image: /images/home/video-drum-circle.jpg
+        url: https://www.youtube.com/watch?v=DatAb0CXzjY
+
+  - id: projects
+    title: Projects
+    blurb: What I'm building now.
+    page: /projects/
+    see_all: All projects
+    items:
+      - id: fire
+        title: Fremont Institute of Robotics Education
+        meta: Robotics club · Fremont
+        blurb: "[Placeholder: what FIRE is and your part in it.]"
+        more: "[Placeholder: a longer write-up, plus a link to the club's own site if it has one.]"
+        image_hint: Team photo or logo
+        todo: true
+      - id: skywyrm
+        title: Skywyrm
+        meta: Game · PC & phone
+        blurb: A 3D dragon take on Slither. Fly, eat, grow, and don't touch their tails.
+        image: /images/skywyrm.jpg
+        url: https://skywyrm.io/
+      - id: data-arts
+        title: Data Arts WG
+        meta: Working group
+        blurb: "[Placeholder: one line on the working group.]"
+        image_hint: Image
+        soon: true
+        todo: true
+      - id: dendros
+        title: Dendros Labs
+        meta: Data explorations
+        blurb: Living data trees, grown from real datasets and git histories.
+        image: /images/home/datatree2.jpg
+        url: https://dendroslabs.com/
+        soon: true
+
+  - id: archive
+    title: Archive
+    blurb: Past projects and toys. Most run right in your browser.
+    page: /archive/
+    see_all: The full archive
+    items:
+      - id: metacube
+        title: Metacube
+        meta: 3D · three.js
+        blurb: "A floating cube with a tiny world on each face: chess, a Mandelbrot landscape, a clock, an Escher room and more."
+        image: /images/home/metacube.jpg
+        url: /metacube/
+      - id: snake3
+        title: Snake 3D
+        meta: Game · keyboard
+        blurb: "Snake in a box, seen four ways at once: top, west, north and through the snake's own eyes."
+        image: /images/home/snake3.jpg
+        url: /snake3/
+      - id: world-pulse
+        title: World Pulse
+        meta: 3D globe
+        blurb: A spinning Earth with news events pinned where they happened.
+        image: /images/home/worldview.jpg
+        url: /worldview/
+      - id: snake
+        title: Snake 2.5D
+        meta: Game · keyboard
+        blurb: Classic snake from above, plus a snake's-eye view underneath.
+        image: /images/home/snake.jpg
+        url: /snake/
+      - id: datatree
+        title: Data Tree
+        meta: Dendros Labs
+        blurb: "Tree zero: the living data tree."
+        image: /images/home/datatree.jpg
+        url: https://dendroslabs.com/datatree/
+      - id: datatree2
+        title: Data Tree 2
+        meta: Dendros Labs
+        blurb: A data tree that grows in stages, replayed.
+        image: /images/home/datatree2.jpg
+        url: https://dendroslabs.com/datatree2/
+      - id: docstree
+        title: Docs Tree
+        meta: Dendros Labs
+        blurb: The Dendros Labs site itself, grown from its git history.
+        image: /images/home/docstree.jpg
+        url: https://dendroslabs.com/datatree2/dendros/
+      - id: cube
+        title: Cube Demo
+        meta: 3D · three.js
+        blurb: "Where it all started: one shiny emerald cube, rotating."
+        image: /images/home/cube.jpg
+        url: /cube/
+
+# Footer and About page
+elsewhere:
+  - { icon: x, label: X, url: "https://x.com/joelisjoel" }
+  - { icon: linkedin, label: LinkedIn, url: "https://www.linkedin.com/in/joelisjoel" }
+  - { icon: youtube, label: YouTube, url: "https://www.youtube.com/channel/UCVWktji_4iS7djmBcTWlpOQ" }
+  - { icon: substack, label: Substack, url: "https://joelisjoel.substack.com" }
+  - { icon: github, label: GitHub, url: "https://github.com/joelisjoel" }
+  - { icon: instagram, label: Instagram, url: "https://www.instagram.com/joelisjoel/" }
+  - { icon: tiktok, label: TikTok, url: "https://www.tiktok.com/@joelisjoel8" }

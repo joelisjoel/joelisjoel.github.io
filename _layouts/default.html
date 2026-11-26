@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Static site: no scripts run, nothing loads from other sites. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'none'; base-uri 'none'; form-action 'none'">
+  {%- if page.title %}
+  <title>{{ page.title }} · {{ site.title }}</title>
+  {%- else %}
+  <title>{{ site.title }}</title>
+  {%- endif %}
+  {%- assign desc = page.description | default: site.description | strip_newlines %}
+  <meta name="description" content="{{ desc }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ desc }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/images/joel.jpg' | absolute_url }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#F4F9F9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#071A1C" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B7E83'/%3E%3Ctext x='16' y='23' font-family='sans-serif' font-size='19' font-weight='800' text-anchor='middle' fill='%23FFFFFF'%3EJ%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="Summary for AI assistants">
+  {%- if page.url == "/" %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Joel",
+      "alternateName": "joelisjoel",
+      "url": "{{ site.url }}/",
+      "image": "{{ '/images/joel.jpg' | absolute_url }}",
+      "description": {{ site.description | strip_newlines | jsonify }},
+      "sameAs": [{% for e in site.data.home.elsewhere %}{{ e.url | jsonify }}{% unless forloop.last %}, {% endunless %}{% endfor %}]
+    }
+  </script>
+  {%- endif %}
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap topbar-in">
+      <a class="brand" href="/"><img src="/images/joel.jpg" alt="" width="28" height="28">joelisjoel</a>
+      <nav aria-label="Sections">
+        <ul>
+          {%- for s in site.data.home.sections %}
+          <li><a href="/#{{ s.id }}"{% if page.url == s.page %} aria-current="page"{% endif %}>{{ s.title }}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+      <a class="pill" href="/linkme/">Links</a>
+    </div>
+  </header>
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <ul class="social" aria-label="Elsewhere">
+        {%- for e in site.data.home.elsewhere %}
+        <li><a href="{{ e.url }}" aria-label="{{ e.label }}" rel="noopener">{% include icon.html name=e.icon %}</a></li>
+        {%- endfor %}
+      </ul>
+      <p><a href="/linkme/">All my links</a> · <a href="/archive/">Archive</a> · © {{ site.time | date: "%Y" }} Joel</p>
+    </div>
+  </footer>
+</body>
+
+</html>

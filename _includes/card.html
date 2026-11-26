@@ -1,0 +1,29 @@
+{%- comment -%}
+  One item as a card. Params: item, section, wide (true on section pages).
+{%- endcomment -%}
+{%- assign it = include.item -%}
+{%- if it.url -%}{%- assign href = it.url -%}{%- else -%}{%- capture href -%}{{ include.section.page }}#{{ it.id }}{%- endcapture -%}{%- endif -%}
+{%- if include.wide -%}{%- assign anchor = it.id -%}{%- else -%}{%- capture anchor -%}{{ include.section.id }}-{{ it.id }}{%- endcapture -%}{%- endif -%}
+<li class="card{% if it.todo %} is-todo{% endif %}" id="{{ anchor }}">
+  <a href="{{ href }}"{% if href contains '://' %} rel="noopener"{% endif %}>
+    <span class="thumb">
+      {%- if it.image -%}
+      <img src="{{ it.image }}" alt="" width="640" height="360" loading="lazy" decoding="async">
+      {%- elsif it.icon -%}
+      <span class="thumb-icon">{% include icon.html name=it.icon %}</span>
+      {%- else -%}
+      <span class="thumb-todo">{{ it.image_hint | default: "Image" }}</span>
+      {%- endif -%}
+    </span>
+    <span class="text">
+      {%- if it.meta or it.soon %}
+      <span class="meta">{{ it.meta }}{% if it.soon %} <span class="badge">Coming soon</span>{% endif %}</span>
+      {%- endif %}
+      <span class="title">{{ it.title }}{% if href contains '://' %}<span class="ext" aria-hidden="true">&nbsp;↗</span>{% endif %}</span>
+      <span class="blurb">{{ it.blurb }}</span>
+      {%- if include.wide and it.more %}
+      <span class="more-text">{{ it.more }}</span>
+      {%- endif %}
+    </span>
+  </a>
+</li>

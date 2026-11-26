@@ -1,0 +1,11 @@
+---
+layout: section
+section: about
+title: About
+---
+<h2 class="sub-h">Elsewhere</h2>
+<ul class="elsewhere">
+  {%- for e in site.data.home.elsewhere %}
+  <li><a href="{{ e.url }}" rel="noopener">{% include icon.html name=e.icon %}<span>{{ e.label }}</span></a></li>
+  {%- endfor %}
+</ul>

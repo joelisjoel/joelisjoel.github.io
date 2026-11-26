@@ -1,0 +1,52 @@
+# joelisjoel.org
+
+Joel's personal site. GitHub Pages builds the `main` branch with Jekyll and
+serves it at joelisjoel.org (joelisjoel.com redirects there via Squarespace).
+Pushing to `main` publishes within about a minute.
+
+## Where things live
+
+| Path | What |
+|---|---|
+| `_data/home.yml` | **All homepage content**: hero, sections, items, social links |
+| `index.html` | Homepage template (hero + one block per section) |
+| `about/`, `thoughts/`, `projects/`, `archive/` | Section pages; each just names its section |
+| `_layouts/default.html` | Page shell: head, top bar, footer |
+| `_layouts/section.html` | Full section page: every item plus its `more` text |
+| `_includes/card.html` | One item card; `home-section.html` is one homepage section |
+| `_includes/icons/*.svg` | Brand icons (Simple Icons, CC0) |
+| `assets/site.css` | All styles; light/dark follow the device setting |
+| `images/home/` | Card thumbnails, 640x360 JPEG |
+| `llms.txt` | Plain-text summary for AI assistants, generated from `home.yml` |
+| `linkme/` | Standalone links page (replaces Linktree); plain HTML |
+| `cube/ metacube/ snake/ snake3/ worldview/ globe2/` | Older browser toys; plain HTML, leave as is |
+
+## Common edits
+
+- **Add an item**: copy an item in `_data/home.yml` into the right section.
+  The homepage shows the first 3 items per section and folds the rest under
+  "Show N more" automatically. Order in the file = order on the page.
+- **Add a section**: add a block under `sections:` and create
+  `<id>/index.html` with `layout: section` and `section: <id>` (copy
+  `projects/index.html`).
+- **Images**: 640x360 JPEG in `images/home/`; strip metadata (location!)
+  before committing. About-section images show square.
+- **Placeholders** have `todo: true`. They get a dashed outline and are left
+  out of `llms.txt`. Remove the flag once the real content is in.
+- Quote YAML values that contain `: ` (colon + space), or the build fails.
+
+## Rules
+
+- No scripts and no third-party requests on the main pages: the layout's
+  Content-Security-Policy blocks them. If an embed is ever needed, loosen the
+  CSP in `_layouts/default.html` deliberately.
+- Don't publish Joel's last name, email, phone or address unless he asks.
+- `snake/spec.md`, `snake3/spec.md` and similar files are human-authored
+  specs: don't edit them.
+
+## Preview locally
+
+```bash
+gem install github-pages
+jekyll build -d /tmp/site && python3 -m http.server -d /tmp/site 8000
+```

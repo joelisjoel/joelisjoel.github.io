@@ -1,0 +1,22 @@
+---
+layout: null
+permalink: /llms.txt
+---
+{%- assign h = site.data.home.hero -%}
+# {{ site.title }}
+
+> {{ h.headline_start }} {{ h.headline_em }} {{ h.intro }}
+
+This is the personal site of Joel (@joelisjoel). Each section below lists
+what is on the site; placeholders are left out.
+{% for s in site.data.home.sections %}
+## {{ s.title }}
+
+{% unless s.blurb contains "Placeholder" %}{{ s.blurb }} {% endunless %}Full page: {{ s.page | absolute_url }}
+{% for it in s.items %}{% unless it.todo %}
+- [{{ it.title }}]({% if it.url contains '://' %}{{ it.url }}{% elsif it.url %}{{ it.url | absolute_url }}{% else %}{{ s.page | absolute_url }}#{{ it.id }}{% endif %}){% if it.meta %} ({{ it.meta }}){% endif %}: {{ it.blurb | strip_newlines }}{% endunless %}{% endfor %}
+{% endfor %}
+## Elsewhere
+{% for e in site.data.home.elsewhere %}
+- [{{ e.label }}]({{ e.url }}){% endfor %}
+- [All links]({{ '/linkme/' | absolute_url }})

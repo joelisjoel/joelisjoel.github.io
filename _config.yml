@@ -1,0 +1,12 @@
+title: Joel is Joel
+description: >-
+  Learning to surf the wave of superintelligence. Thoughts, projects and
+  browser toys by Joel (@joelisjoel).
+url: https://joelisjoel.org
+baseurl: ""
+markdown: kramdown
+
+# Not published: notes for editing the site
+exclude:
+  - README.md
+  - CLAUDE.md

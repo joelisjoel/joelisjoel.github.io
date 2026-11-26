@@ -1,0 +1,29 @@
+{%- comment -%}
+  A section on the homepage: heading, blurb, first 3 items, the rest folded.
+  Params: section, number.
+{%- endcomment -%}
+{%- assign s = include.section -%}
+{%- assign extra = s.items.size | minus: 3 -%}
+<section class="section" id="{{ s.id }}" aria-labelledby="{{ s.id }}-h">
+  <div class="section-head">
+    <p class="kicker">{{ include.number }}</p>
+    <h2 id="{{ s.id }}-h"><a href="{{ s.page }}">{{ s.title }}</a></h2>
+    <p class="section-blurb">{{ s.blurb }}</p>
+  </div>
+  <ul class="cards cards-{{ s.style | default: 'grid' }}">
+    {%- for item in s.items limit:3 %}
+    {% include card.html item=item section=s %}
+    {%- endfor %}
+  </ul>
+  {%- if extra > 0 %}
+  <details class="more">
+    <summary>Show {{ extra }} more</summary>
+    <ul class="cards cards-rows">
+      {%- for item in s.items offset:3 %}
+      {% include card.html item=item section=s %}
+      {%- endfor %}
+    </ul>
+  </details>
+  {%- endif %}
+  <a class="see-all" href="{{ s.page }}">{{ s.see_all | default: "See all" }} <span aria-hidden="true">→</span></a>
+</section>

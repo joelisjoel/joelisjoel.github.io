@@ -23,14 +23,11 @@ hero:
   # status_url: add a link here once the visualizer has a page
   headline_start: "Learning to surf the wave of"
   headline_em: "superintelligence."
-  # Draft written from your X bio, YouTube and projects. Edit freely.
   intro: >-
-    I build at the edges of data, AI and play: from a Facebook app that
-    passed a million installs in 2007, to living data trees, a 3D dragon game
-    and a robotics club in Fremont. This site is the fun side: art, games and
-    experiments.
+    This is Joel's “just for fun” page with writing, philosophy and fun
+    projects.
   # The hand-off for anyone here on business
-  work_label: "Here for work? My professional profile is on LinkedIn"
+  work_label: "Pros: check out LinkedIn"
   work_url: https://www.linkedin.com/in/joelisjoel
 
 sections:

@@ -27,7 +27,7 @@
 hero:
   status: "Now building a P≠NP proof visualizer"
   status_url: /projects/#pequalsnp
-  headline_start: "Let's learn to surf the wave of"
+  headline_start: "Learning to surf the wave of"
   headline_em: "superintelligence."
   # One line per line on the page
   intro: |-
@@ -194,7 +194,7 @@ sections:
         title: Fremont Institute of Robotics Education
         meta: 2023–present · Community service
         blurb: >-
-          Lead mentor for over fifty high-school students on FIRST Robotics
+          Lead mentor for fifty high-school students on FIRST Robotics
           team 9470. Winner of the Archimedes division and a top 1% team in
           2026.
         image: /images/home/fire.jpg

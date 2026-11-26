@@ -28,7 +28,7 @@ hero:
   status: "Now building a P≠NP proof visualizer"
   status_url: /projects/#pequalsnp
   headline_start: "Learning to surf the wave of"
-  headline_em: "superintelligence."
+  headline_em: "superintelligence"
   # One line per line on the page
   intro: |-
     Currently on leave from Google to take care of family business.

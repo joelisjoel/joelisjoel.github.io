@@ -5,7 +5,7 @@ permalink: /llms.txt
 {%- assign h = site.data.home.hero -%}
 # {{ site.title }}
 
-> {{ h.headline_start }} {{ h.headline_em }} {{ h.intro }}
+> {{ h.headline_start }} {{ h.headline_em | remove: "." }}. {{ h.intro | newline_to_br | strip_newlines | replace: "<br />", " " }}
 
 This is the personal site of Joel (@joelisjoel). Each section below lists
 what is on the site; placeholders are left out.

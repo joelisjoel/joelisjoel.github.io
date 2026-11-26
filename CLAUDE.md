@@ -15,7 +15,7 @@ Pushing to `main` publishes within about a minute.
 | `_layouts/section.html` | Full section page: every item plus its `more` text |
 | `_includes/card.html` | One item card; `home-section.html` is one homepage section |
 | `_includes/icons/*.svg` | Brand icons (Simple Icons, CC0) |
-| `assets/site.css` | All styles; light/dark follow the device setting |
+| `assets/site.css` | All styles; dark by default (a light palette is kept for a future switch) |
 | `images/home/` | Card thumbnails, 640x360 JPEG |
 | `llms.txt` | Plain-text summary for AI assistants, generated from `home.yml` |
 | `linkme/` | Standalone links page (replaces Linktree); plain HTML |

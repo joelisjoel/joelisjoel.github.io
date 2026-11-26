@@ -1,36 +1,35 @@
 /* joelisjoel.org: one stylesheet for the homepage and section pages.
-   Light and dark follow the device setting. Teal matches /linkme/. */
+   Dark is the default for everyone. A light palette is kept below
+   (html data-theme="light") in case a theme switch is added later. */
 
 :root {
-  color-scheme: light dark;
-  --bg: #F4F9F9;
-  --surface: #FFFFFF;
-  --ink: #0B2426;
-  --muted: #4A6366;
-  --line: #D7E6E6;
-  --accent: #0B7E83;        /* text-safe teal: 4.9:1 on white */
+  color-scheme: dark;
+  --bg: #071A1C;
+  --surface: #0C2427;
+  --ink: #E6F6F5;
+  --muted: #9DB9BB;
+  --line: #1C3B3E;
+  --accent: #5FD3D6;        /* text-safe teal on the dark background */
   --accent-soft: #29C2C7;   /* brand teal, decorative */
-  --glow: rgba(41, 194, 199, 0.22);
-  --grid: rgba(11, 126, 131, 0.09);
-  --shadow: 0 1px 2px rgba(11, 36, 38, 0.06), 0 6px 20px rgba(11, 36, 38, 0.06);
+  --glow: rgba(41, 194, 199, 0.16);
+  --grid: rgba(95, 211, 214, 0.07);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
   --radius: 14px;
   --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #071A1C;
-    --surface: #0C2427;
-    --ink: #E6F6F5;
-    --muted: #9DB9BB;
-    --line: #1C3B3E;
-    --accent: #5FD3D6;
-    --accent-soft: #29C2C7;
-    --glow: rgba(41, 194, 199, 0.16);
-    --grid: rgba(95, 211, 214, 0.07);
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
-  }
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #F4F9F9;
+  --surface: #FFFFFF;
+  --ink: #0B2426;
+  --muted: #4A6366;
+  --line: #D7E6E6;
+  --accent: #0B7E83;        /* 4.9:1 on white */
+  --glow: rgba(41, 194, 199, 0.22);
+  --grid: rgba(11, 126, 131, 0.09);
+  --shadow: 0 1px 2px rgba(11, 36, 38, 0.06), 0 6px 20px rgba(11, 36, 38, 0.06);
 }
 
 * { box-sizing: border-box; }

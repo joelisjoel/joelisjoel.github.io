@@ -104,7 +104,7 @@ sections:
           time.
         image: /images/home/pequalsnp-visualizer.jpg
         url: /pnp/
-        cta: Play the live game
+        cta: See the tug of war
         # Newest first. The player shows the first; the rest list under the article (6 at most).
         # Each is a square clip; the daily update adds one (see pnp_viz/RUNBOOK.md in joelisjoel/joelisjoel).
         videos:
@@ -123,20 +123,21 @@ sections:
           with a fleet of AI agents, and the Lean proof checker is the only
           judge of what counts.
 
-          The live game draws that record as a football field. Checked
-          lemmas sit in their side's truth zone, foundations at the back; open
-          lemmas stand in the grey field, nearer their zone the likelier we
-          guess they are true; kills are lasers fired by each refuted lemma's
-          exact opposite. The claim is the ball at midfield, with a line from
-          each program's target showing what is still missing. Mirza's [map of
-          a 17-million-line Lean proof](https://bosnadev.com/lab/riemann) of
-          the Riemann Hypothesis hangs every file below one finished theorem;
-          this field shows the other kind of picture, a game still in play
-          with no theorem at the top.
+          The live view draws that record as a tug of war. Each side pulls
+          the claim, a knot in the middle, toward its truth zone. Proved
+          lemmas anchor the ropes from the back: the more lemmas rest on one,
+          the farther back it stands and the harder it pulls. Open lemmas wait
+          in the grey area, nearer their zone the likelier we guess they are
+          true; kills are lasers fired by each refuted lemma's exact opposite.
+          A timeline sets our toy odds beside the prediction markets on P vs
+          NP. Mirza's [map of a 17-million-line Lean
+          proof](https://bosnadev.com/lab/riemann) of the Riemann Hypothesis
+          hangs every file below one finished theorem; this shows the other
+          kind of picture, a contest still in play with no theorem at the top.
 
           As of November 26, 11,176 lemmas were checked. None pulls toward
           P = NP, and no lemma even states P ≠ NP. Each program's target is a
-          stepping stone rather than the claim, so the ball hasn't moved, and
+          stepping stone rather than the claim, so the knot hasn't moved, and
           the picture shows effort and shape, not distance. The project calls
           its own tally "a count, not a probability."
 

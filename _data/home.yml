@@ -96,6 +96,40 @@ sections:
     page: /projects/
     see_all: All projects
     items:
+      - id: riemann
+        title: Riemann Proof Viz
+        meta: Video · 1 min · 2026
+        blurb: >-
+          The Lean proof of the Riemann Hypothesis shrinking 154 times in five
+          days, drawn with Mirza's map method.
+        image: /images/home/riemann-proof-viz.jpg
+        video: /videos/riemann-proof-viz.mp4
+        poster: /videos/riemann-proof-viz-poster.jpg
+        url: https://bosnadev.com/lab/riemann
+        cta: Mirza's original map
+        more: |
+          On November 20, 2026, Levent Alpöge released a Lean proof of the
+          Riemann Hypothesis, written with Claude. It is 17,374,215 lines in
+          175,187 files. [Mirza](https://bosnadev.com/lab/riemann) drew it as
+          a map: each dot is a file, each thread an import, and the theorem
+          sits at the top. A file's height is set by the longest chain of
+          imports above it.
+
+          This video uses the same method to show what happened next. The Lean
+          community cut the proof in rounds. First went unused files, then came
+          a move to a newer Lean, then small files were merged into the files
+          above them. By November 25 it was 58,947 files and 13.7 million
+          lines. The same day, Luke Sernau and colleagues at Anthropic, with
+          Claude, published a shorter version. Its readable edition has
+          477,124 lines and its compact edition 112,827, which is 154 times
+          shorter than the original.
+
+          Every number is counted from the Lean source at each stage. Files
+          are just packaging, so the fairest measure is lines of code, leaving
+          out comments, blank lines and imports. By that count the compact
+          edition is 196 times smaller. Computers have checked the proof, but
+          no mathematician has read it through yet.
+
       - id: pequalsnp
         title: PequalsNP Lemma Visualizer
         meta: Visualization · 2026

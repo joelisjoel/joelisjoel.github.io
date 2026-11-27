@@ -66,7 +66,8 @@ sections:
       - id: pascals-bunker
         title: Pascal's Bunker
         meta: Video · 3 min
-        soon: true
+        video: /videos/pascals-bunker.mp4
+        poster: /videos/pascals-bunker-poster.jpg
         blurb: >-
           If AI ends the world, will building a bunker help? The parallel
           between the possibility of a digital god and Pascal's wager.

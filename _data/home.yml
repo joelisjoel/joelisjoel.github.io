@@ -107,8 +107,11 @@ sections:
         url: /pnp/
         cta: See the tug of war
         # Newest first. The player shows the first; the rest list under the article (6 at most).
-        # Each is a square clip; the daily update adds one (see pnp_viz/RUNBOOK.md in joelisjoel/joelisjoel).
+        # Each is a square clip; the daily update adds one (see pnp/RUNBOOK.md in joelisjoel/joelisjoel).
         videos:
+          - file: /videos/pnp-2026-11-27.mp4
+            date: Nov 27, 2026
+            note: a quiet night; the circuits target is open again
           - file: /videos/pnp-2026-11-26.mp4
             date: Nov 26, 2026
             note: daily update with voiceover
@@ -136,7 +139,7 @@ sections:
           hangs every file below one finished theorem; this shows the other
           kind of picture, a contest still in play with no theorem at the top.
 
-          As of November 26, 11,176 lemmas were checked. None pulls toward
+          As of November 27, 12,735 lemmas were checked. None pulls toward
           P = NP, and no lemma even states P ≠ NP. Each program's target is a
           stepping stone rather than the claim, so the knot hasn't moved, and
           the picture shows effort and shape, not distance. The project calls

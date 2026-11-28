@@ -99,9 +99,12 @@ sections:
       - id: riemann
         title: Riemann Proof Viz
         meta: Video · 1 min · 2026
+        # Tagline and order from the deck's "Reimann Proof Viz" slide
         blurb: >-
-          The Lean proof of the Riemann Hypothesis shrinking 154 times in five
-          days, drawn with Mirza's map method.
+          A quick video showing the slim down of the #Riemann Lean proof. AI
+          is going to 100x the complexity of systems we are working with, and
+          we'll need better visualization tools to keep up. Inspired by
+          @b1rkh0ff's jellyfish viz.
         image: /images/home/riemann-proof-viz.jpg
         video: /videos/riemann-proof-viz.mp4
         poster: /videos/riemann-proof-viz-poster.jpg
@@ -132,6 +135,8 @@ sections:
 
           The interactive map below lets you fly through all seven stages and
           scrub between them with a slider.
+
+          *By Claude.*
 
       - id: pequalsnp
         title: PequalsNP Lemma Visualizer

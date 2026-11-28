@@ -151,6 +151,9 @@ sections:
         # Newest first. The player shows the first; the rest list under the article (6 at most).
         # Each is a square clip; the daily update adds one (see pnp/RUNBOOK.md in joelisjoel/joelisjoel).
         videos:
+          - file: /videos/pnp-2026-11-28.mp4
+            date: Nov 28, 2026
+            note: the record doubles; three searches come up empty
           - file: /videos/pnp-2026-11-27.mp4
             date: Nov 27, 2026
             note: a quiet night; the circuits target is open again
@@ -160,7 +163,7 @@ sections:
           - file: /videos/pnp-2026-11-25.mp4
             date: Nov 25, 2026
             note: the first post, music only
-        video_square: true
+        video_square: false
         poster: /images/home/pequalsnp-clip-poster.jpg
         more: |
           P vs NP asks whether every problem whose answer is easy to check is
@@ -181,7 +184,7 @@ sections:
           hangs every file below one finished theorem; this shows the other
           kind of picture, a contest still in play with no theorem at the top.
 
-          As of November 27, 12,735 lemmas were checked. None pulls toward
+          As of November 28, 26,810 lemmas were checked. None pulls toward
           P = NP, and no lemma even states P ≠ NP. Each program's target is a
           stepping stone rather than the claim, so the knot hasn't moved, and
           the picture shows effort and shape, not distance. The project calls

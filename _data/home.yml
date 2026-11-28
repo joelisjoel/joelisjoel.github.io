@@ -133,8 +133,8 @@ sections:
           the farther back it stands and the harder it pulls. Open lemmas wait
           in the grey area, nearer their zone the likelier we guess they are
           true; kills are lasers fired by each refuted lemma's exact opposite.
-          A timeline sets our toy odds beside the prediction markets on P vs
-          NP. Mirza's [map of a 17-million-line Lean
+          A timeline sets our toy odds that P = NP, the surprising answer,
+          beside the prediction markets. Mirza's [map of a 17-million-line Lean
           proof](https://bosnadev.com/lab/riemann) of the Riemann Hypothesis
           hangs every file below one finished theorem; this shows the other
           kind of picture, a contest still in play with no theorem at the top.

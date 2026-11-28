@@ -105,8 +105,8 @@ sections:
         image: /images/home/riemann-proof-viz.jpg
         video: /videos/riemann-proof-viz.mp4
         poster: /videos/riemann-proof-viz-poster.jpg
-        url: https://bosnadev.com/lab/riemann
-        cta: Mirza's original map
+        url: /riemann/
+        cta: Fly through the map
         more: |
           On November 20, 2026, Levent Alpöge released a Lean proof of the
           Riemann Hypothesis, written with Claude. It is 17,374,215 lines in
@@ -129,6 +129,9 @@ sections:
           out comments, blank lines and imports. By that count the compact
           edition is 196 times smaller. Computers have checked the proof, but
           no mathematician has read it through yet.
+
+          The interactive map below lets you fly through all seven stages and
+          scrub between them with a slider.
 
       - id: pequalsnp
         title: PequalsNP Lemma Visualizer

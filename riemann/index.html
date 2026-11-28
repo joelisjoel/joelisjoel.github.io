@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<title>Riemann Proof Viz · Joel is Joel</title>
+<meta name="description" content="Fly through the import map of the Lean proof of the Riemann Hypothesis as it shrank 154 times in five days, using Mirza's map method: each dot is a file, each thread an import.">
+<meta name="theme-color" content="#000103">
+<meta property="og:title" content="Riemann Proof Viz">
+<meta property="og:description" content="The Lean proof of the Riemann Hypothesis, 17,374,215 lines to 112,827 in five days. Fly through every stage.">
+<meta property="og:image" content="https://joelisjoel.org/videos/riemann-proof-viz-poster.jpg">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #000103; --fg: #eef0ff; --muted: #a3a9c6; --dim: rgba(238, 240, 255, 0.55);
+  --violet: #b9a8ff; --cyan: #27f2ff; --amber: #ffb547; --panel: rgba(4, 6, 16, 0.62); --rule: rgba(185, 168, 255, 0.22);
+  --f-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font: 15px/1.45 var(--f-body); overflow: hidden; }
+[hidden] { display: none !important; }
+a { color: var(--violet); text-underline-offset: 2px; }
+#map { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+#map:active { cursor: grabbing; }
+
+.hud { position: fixed; top: max(14px, env(safe-area-inset-top)); left: max(14px, env(safe-area-inset-left)); width: min(360px, calc(100vw - 28px));
+  padding: 14px 16px 12px; background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; backdrop-filter: blur(6px); pointer-events: auto; }
+.eyebrow { margin: 0; font: 600 11px/1.3 var(--f-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); }
+.eyebrow a { color: inherit; text-decoration: none; }
+#stage { margin: 6px 0 0; font: 700 22px/1.15 var(--f-body); color: var(--cyan); letter-spacing: 0.01em; }
+#who { margin: 3px 0 0; font-size: 13px; color: var(--muted); }
+.counts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; margin: 12px 0 0; }
+.counts div { min-width: 0; }
+.counts dt { font: 500 10.5px/1.2 var(--f-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--dim); }
+.counts dd { margin: 2px 0 0; font: 700 19px/1.1 var(--f-mono); font-variant-numeric: tabular-nums; color: var(--fg); }
+.counts .big dd { font-size: 24px; }
+#ratio { margin: 10px 0 0; font: 600 13px/1.3 var(--f-mono); color: var(--amber); }
+#beadnote { margin: 4px 0 0; font-size: 12px; color: var(--muted); }
+
+.controls { position: fixed; left: 0; right: 0; bottom: 0; padding: 10px max(16px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  background: linear-gradient(to top, rgba(0, 1, 3, 0.92), rgba(0, 1, 3, 0.6) 70%, rgba(0, 1, 3, 0)); }
+.row { display: flex; align-items: center; gap: 14px; max-width: 980px; margin: 0 auto; }
+#play, #reset { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); background: rgba(185, 168, 255, 0.12);
+  color: var(--fg); font: 600 15px/1 var(--f-body); cursor: pointer; }
+#reset { width: auto; padding: 0 14px; border-radius: 22px; font-size: 12.5px; }
+#play:disabled { opacity: 0.45; cursor: default; }
+.track { position: relative; flex: 1; padding-bottom: 22px; }
+#slider { width: 100%; margin: 0; accent-color: var(--violet); height: 28px; cursor: pointer; }
+#ticks { position: absolute; left: 9px; right: 9px; bottom: 0; height: 20px; }
+.tick { position: absolute; transform: translateX(-50%); background: none; border: 0; padding: 0 4px; color: var(--dim); font: 600 12px/20px var(--f-mono); cursor: pointer; }
+.tick.on { color: var(--amber); }
+.hint { max-width: 980px; margin: 6px auto 0; font-size: 11.5px; color: var(--dim); text-align: center; }
+
+details.about { position: fixed; top: max(14px, env(safe-area-inset-top)); right: max(14px, env(safe-area-inset-right)); max-width: min(380px, calc(100vw - 28px));
+  background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 8px 14px; backdrop-filter: blur(6px); font-size: 13px; }
+details.about summary { cursor: pointer; font: 600 12px/1.6 var(--f-mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--violet); }
+details.about p { margin: 8px 0; color: var(--fg); }
+
+#loading { position: fixed; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); }
+.loadbox { width: min(360px, 80vw); }
+.bar { height: 3px; background: rgba(185, 168, 255, 0.15); border-radius: 2px; overflow: hidden; margin-top: 10px; }
+#bar { height: 100%; width: 0; background: var(--violet); }
+#loadnote { margin: 6px 0 0; font-size: 11.5px; color: var(--dim); }
+
+@media (max-width: 760px) {
+  .hud { padding: 10px 12px 9px; }
+  #stage { font-size: 17px; }
+  .counts { grid-template-columns: repeat(3, 1fr); gap: 6px 10px; margin-top: 8px; }
+  .counts dd { font-size: 14px; } .counts .big dd { font-size: 16px; }
+  .counts dt { font-size: 9.5px; }
+  #ratio { margin-top: 6px; font-size: 12px; }
+  details.about { top: auto; bottom: calc(118px + env(safe-area-inset-bottom)); right: max(10px, env(safe-area-inset-right)); padding: 4px 10px; }
+  .hint { display: none; }
+}
+</style>
+</head>
+<body>
+<canvas id="map" aria-label="3D map of the Lean proof's files and imports"></canvas>
+
+<div id="loading"><div class="loadbox">Loading the import maps (12.6 MB)…<div class="bar"><div id="bar"></div></div></div></div>
+
+<section class="hud" aria-live="polite">
+  <p class="eyebrow"><a href="/projects/#riemann">Lean proof of the Riemann Hypothesis</a></p>
+  <p id="stage">Nov 20 · The submission</p>
+  <p id="who">Levent Alpöge, with Claude</p>
+  <dl class="counts">
+    <div class="big"><dt>Files</dt><dd id="c-files">–</dd></div>
+    <div class="big"><dt>Lines</dt><dd id="c-lines">–</dd></div>
+    <div><dt>Code lines</dt><dd id="c-code">–</dd></div>
+    <div><dt>Imports</dt><dd id="c-imports">–</dd></div>
+    <div><dt>Longest chain</dt><dd id="c-chain">–</dd></div>
+  </dl>
+  <p id="ratio"></p>
+  <p id="beadnote" hidden>Dot size = lines in the file</p>
+  <p id="loadnote" class="eyebrow" style="color:var(--dim);text-transform:none;letter-spacing:0">Loading later stages…</p>
+</section>
+
+<details class="about">
+  <summary>About this map</summary>
+  <p>Each dot is a Lean file and each thread is an import. The white point at the top is the theorem. A file's height is the longest chain of imports from the theorem down to it. This is <a href="https://bosnadev.com/lab/riemann" rel="noopener">Mirza's map method</a>; sideways position is a layout choice.</p>
+  <p>Seven stages: the submission by Levent Alpöge with Claude (Nov 20); four stages of cleanup by the Lean community (<a href="https://github.com/leanprover-community/riemann-hypothesis" rel="noopener">repo</a>); and the readable and compact editions by Luke Sernau and colleagues at Anthropic, with Claude (<a href="https://github.com/lsernau/grh-lean" rel="noopener">repo</a>).</p>
+  <p>Every number is counted from the Lean source of each stage. Files are packaging: on Nov 23 small files were merged into others and lines rose as Mathlib imports were spelled out. Code lines (no comments, blanks or imports) are the like-for-like measure.</p>
+  <p>Machine-checked; not yet read through by a mathematician. <a href="/projects/#riemann">Watch the video</a>.</p>
+</details>
+
+<div class="controls">
+  <div class="row">
+    <button id="play" type="button" aria-label="Play the five days" disabled>▶</button>
+    <div class="track">
+      <input id="slider" type="range" min="0" max="6" step="0.001" value="0" aria-label="Stage of the proof, Nov 20 to the compact edition">
+      <div id="ticks"></div>
+    </div>
+    <button id="reset" type="button">Reset view</button>
+  </div>
+  <p class="hint">Drag to orbit · scroll or pinch to zoom · shift-drag or two fingers to pan · double-click to reset · space to play</p>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
